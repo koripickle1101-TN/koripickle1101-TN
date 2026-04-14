@@ -1,19 +1,22 @@
 KORI N. PICKLE
-Healthcare Operations and RCM Specialist
+8716 Trout Road, Mascot, TN 37806
+865-240-6065
+koripickle1101@gmail.com
+
+HEALTHCARE OPERATIONS AND RCM SPECIALIST
 Location: Mascot, TN and Nashville Market
 
 THE VOL EDGE RCM OPERATIONAL SUITE
+
 I build technical solutions for revenue cycle integrity. My work focuses on reducing overhead and increasing payment velocity.
 
-RCM Informatics: SQL auditing and workflow mapping.
-
-Credentialing Sentinel: Systematic provider enrollment frameworks.
-
-Automation Logic: Scripted efficiency for AR cycles.
-
-Infrastructure Optimizer: Cost reduction through tech stack strategy.
+- RCM Informatics: SQL auditing and workflow mapping.
+- Credentialing Sentinel: Systematic provider enrollment frameworks.
+- Automation Logic: Scripted efficiency for AR cycles.
+- Infrastructure Optimizer: Cost reduction through tech stack strategy.
 
 EDUCATION AND CERTIFICATION
+
 BS in Healthcare Administration
 University of Phoenix
 GPA: 3.6
@@ -21,6 +24,7 @@ Expected Graduation: March 2027
 Specialized in Denial Resolution and Health Information Systems.
 
 CONTACT INFO
+
 Email: koripickle1101@gmail.com
 Phone: 865-240-6065
 LinkedIn: linkedin.com/in/koripickle
