@@ -7,8 +7,11 @@ THE VOL EDGE RCM OPERATIONAL SUITE
 I build technical solutions for revenue cycle integrity. My work focuses on reducing overhead and increasing payment velocity.
 
 RCM Informatics: SQL auditing and workflow mapping.
+
 Credentialing Sentinel: Systematic provider enrollment frameworks.
+
 Automation Logic: Scripted efficiency for AR cycles.
+
 Infrastructure Optimizer: Cost reduction through tech stack strategy.
 
 EDUCATION AND CERTIFICATION
