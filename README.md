@@ -17,7 +17,7 @@ Infrastructure Optimizer: Cost reduction through tech stack strategy.
 EDUCATION AND CERTIFICATION
 BS in Healthcare Administration
 University of Phoenix
-GPA 3.7
+GPA 3.52
 Specialized in Denial Resolution and Health Information Systems.
 
 CONTACT INFO
