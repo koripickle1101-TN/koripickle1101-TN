@@ -1,22 +1,22 @@
-VOL SUMMIT RCM™ | AUTOMATION AND PRIOR AUTHORIZATION LOGIC
+VOL SUMMIT RCM | CREDENTIALING SENTINEL
 Architect: Kori Nichole Pickle | BSHA (Expected March 2027)
 
-STRICT RULE: THE ONE-MOVE MANDATE (OMM-2026)
-One-time execution and done. No repetitive updates.
+Overview
+Credentialing Sentinel is the compliance and oversight module of the Vol Summit RCM ecosystem. It manages provider enrollment data, tracking renewal cycles and payer-specific requirements to prevent revenue leakage caused by credentialing lapses.
 
-OVERVIEW
-This repository documents the automated routing protocols and decision trees utilized to intercept clinical scheduling requests and initiate prior authorization pathways, minimizing manual front-desk data entry.
+Core Functions
+- Provider Data Vault: Centralized management of NPI, CAQH, and state licensure.
+- Renewal Logic: Automated alerts for expiring certifications and payer contracts.
+- Compliance Guard: Real-time validation against OIG and Medicare exclusion lists.
 
-CORE MODULES IN THIS REPO
-- base_camp_schema.sql: SQL foundation for patient intake and eligibility.
-- DENIAL_ROUTING_ENGINE.json: Logic for intercepting and re-routing clinical denials.
+Systems Integrity
+- Brand Identity: Tennessee Orange (FF8200), Smokey Gray (4B4B4B), Black (0A0A0A)
+- Architecture: Modular, executive-grade compliance tracking.
 
-BRAND SPECIFICATIONS (VOL-COLOR-STACK)
-- Primary: Tennessee Orange (FF8200)
-- Secondary: Smokey Gray (4B4B4B)
-- Contrast: Black (0A0A0A)
+Professional Roadmap
+- GPA: 3.6 | Dean’s List
+- Target Placement: May 5, 2027
+- Goal: 100% Remote Healthcare Operations or RCM Leadership
 
-2027 TARGET
-Securing a 100% Remote Healthcare Operations or RCM Leadership role by May 5, 2027.
-
-Main Profile: https://github.com/koripickle1101-TN
+Portfolio Navigation
+[Main Profile](https://github.com/koripickle1101-TN) | [Automation Logic](https://github.com/koripickle1101-TN/vol-summit-automation-logic-) | [Informatics](https://github.com/koripickle1101-TN/vol-summit-rcm-informatics-)
