@@ -1,21 +1,24 @@
-name: Vol Edge QR Deployment
+name: Vol Edge Agentic Deployment
 on:
   push:
     branches:
       - main
 jobs:
-  deploy-qr:
+  deploy-asset:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Inject QR
+      - name: Generate SVG
         run: |
-          echo -e '\n<div align="center"><a href="https://linktr.ee/koripickle" target="_blank"><img src="vol-edge-qr-code.jpg" width="200" style="border: 2px solid rgb(255, 130, 0);"></a><p>Vol Edge RCM Suite</p></div>' >> README.md
+          echo '<svg width="400" height="120" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="rgb(10, 10, 10)" rx="8"/><circle cx="50" cy="60" r="12" fill="rgb(255, 130, 0)"><animate attributeName="r" values="12;16;12" dur="2.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="1;0.6;1" dur="2.5s" repeatCount="indefinite"/></circle><text x="85" y="55" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="bold" fill="rgb(255, 255, 255)">VOL EDGE RCM: ACTIVE</text><text x="85" y="80" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="rgb(75, 75, 75)">SYSTEM STATUS: OPTIMIZING REVENUE CYCLE</text></svg>' > rcm-status.svg
+      - name: Inject README
+        run: |
+          sed -i '1s/^/<img src="rcm-status.svg" alt="Vol Edge RCM Indicator">\n\n/' README.md
       - name: Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add rcm-status.svg README.md
           git commit -m "Hardcore Automation Trigger" || exit 0
           git push
