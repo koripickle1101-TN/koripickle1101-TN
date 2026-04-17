@@ -17,9 +17,9 @@ BS in Healthcare Administration | University of Phoenix
 - Focus: Healthcare Informatics, RCM, and Public Health Systems.
 
 BRAND SPECIFICATIONS (VOL-COLOR-STACK)
-- Primary: Tennessee Orange (#FF8200)
-- Secondary: Smokey Gray (#4B4B4B)
-- Contrast: Black (#0A0A0A)
+- Primary: Tennessee Orange (FF8200)
+- Secondary: Smokey Gray (4B4B4B)
+- Contrast: Black (0A0A0A)
 
 CORE CAPABILITIES
 - RCM Informatics: SQL auditing and technical workflow mapping.
