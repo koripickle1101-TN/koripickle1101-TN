@@ -2,6 +2,9 @@ KORI N. PICKLE | VOL SUMMIT RCM™
 Healthcare Operations and Systems Architect
 Mascot, TN | 865-240-6065 | koripickle1101@gmail.com
 
+STRICT RULE: THE ONE-MOVE MANDATE (OMM-2026)
+This rule is hard-coded. Every technical and brand request results in a single, comprehensive, executable block. No multi-step tutorials. No repetitive updates. No phase-logic. One-time execution and done.
+
 MOUNTAIN VIEW EXECUTIVE SUMMARY
 Emerging Healthcare Operations specialist focused on Revenue Cycle Integrity and System Architecture. I build modular, Tennessee-rooted solutions that bridge the gap between clinical documentation and financial sustainability.
 
