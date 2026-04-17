@@ -1,46 +1,33 @@
-KORI N. PICKLE
-8716 Trout Road, Mascot, TN 37806
-865-240-6065
-koripickle1101@gmail.com
+KORI N. PICKLE | VOL SUMMIT RCM™
+Healthcare Operations and Systems Architect
+Mascot, TN | 865-240-6065 | koripickle1101@gmail.com
 
-HEALTHCARE OPERATIONS AND RCM SPECIALIST
-Location: Mascot, TN and Nashville Market
+MOUNTAIN VIEW EXECUTIVE SUMMARY
+Emerging Healthcare Operations specialist focused on Revenue Cycle Integrity and System Architecture. I build modular, Tennessee-rooted solutions that bridge the gap between clinical documentation and financial sustainability.
 
-THE VOL EDGE RCM OPERATIONAL SUITE
+THE VOL SUMMIT RCM™ ECOSYSTEM
+- Summit Base Camp™: Automated Digital Intake and Eligibility Verification.
+- Summit Ascent™: AI-Driven Prior Authorization and Clinical Mapping.
+- Summit Peak™: Predictive Denial Recovery and Revenue Optimization.
 
-I build technical solutions for revenue cycle integrity. My work focuses on reducing overhead and increasing payment velocity.
+EDUCATION
+BS in Healthcare Administration | University of Phoenix
+- GPA: 3.7
+- Expected Graduation: March 2027
+- Focus: Healthcare Informatics, RCM, and Public Health Systems.
 
-- RCM Informatics: SQL auditing and workflow mapping.
+BRAND SPECIFICATIONS (VOL-COLOR-STACK)
+- Primary: Tennessee Orange (#FF8200)
+- Secondary: Smokey Gray (#4B4B4B)
+- Contrast: Black (#0A0A0A)
+
+CORE CAPABILITIES
+- RCM Informatics: SQL auditing and technical workflow mapping.
 - Credentialing Sentinel: Systematic provider enrollment frameworks.
 - Automation Logic: Scripted efficiency for AR cycles.
-- Infrastructure Optimizer: Cost reduction through tech stack strategy.
 
-EDUCATION AND CERTIFICATION
+2027 TARGET
+Securing a 100% Remote Healthcare Operations or RCM Leadership role by May 5, 2027.
 
-BS in Healthcare Administration
-University of Phoenix
-GPA: 3.6
-Expected Graduation: March 2027
-Specialized in Denial Resolution and Health Information Systems.
-
-CONTACT INFO
-
-Email: koripickle1101@gmail.com
-Phone: 865-240-6065
-LinkedIn: linkedin.com/in/koripickle
-
-
-<!--
-**koripickle1101-TN/koripickle1101-TN** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+LinkedIn: https://linkedin.com/in/koripickle
+Portfolio: https://github.com/koripickle1101-TN
