@@ -1,0 +1,23 @@
+{
+  "system": "VOL SUMMIT RCM",
+  "module": "ASCENT PRIOR AUTH",
+  "logic_version": "2026.1.0",
+  "auth_priority_mapping": {
+    "C00-D49": {
+      "category": "Neoplasms",
+      "priority": "STAT",
+      "auth_window_days": 1
+    },
+    "I00-I99": {
+      "category": "Circulatory System",
+      "priority": "URGENT",
+      "auth_window_days": 2
+    },
+    "M00-M99": {
+      "category": "Musculoskeletal",
+      "priority": "ROUTINE",
+      "auth_window_days": 5
+    }
+  },
+  "operational_protocol": "Execute auth request via Summit Gateway if CPT logic triggers requirement."
+}
