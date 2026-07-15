@@ -100,11 +100,23 @@ details[open] summary { margin-bottom:0.75rem; }
 .dev-list li { padding:0.6rem 0; border-bottom:1px solid var(--color-border); color:var(--color-text-muted); }
 .dev-list li:last-child { border-bottom:none; }
 .edu-block { background: var(--color-surface); border:1px solid var(--color-border); border-radius:0.5rem; padding:1.5rem; }
+.resource-banner, .resource-card { background:var(--color-surface); border:1px solid var(--color-border); border-radius:0.5rem; overflow:hidden; }
+.resource-banner { margin:1.5rem 0; }
+.resource-banner a, .resource-card a { display:block; line-height:0; }
+.resource-banner img, .resource-card img { display:block; width:100%; height:auto; transition:transform 0.2s ease; }
+.resource-banner a:hover img, .resource-card a:hover img { transform:scale(1.01); }
+.resource-grid { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:1.25rem; }
+.resource-card figcaption, .resource-banner figcaption { padding:0.9rem 1rem; color:var(--color-text-muted); font-size:0.88rem; line-height:1.5; }
+.resource-card figcaption strong, .resource-banner figcaption strong { color:var(--color-text); }
+.resource-note { font-size:0.88rem; color:var(--color-text-faint); }
 .contact-links { list-style:none; margin-top:1rem; }
 .contact-links li { padding:0.5rem 0; }
 .contact-links strong { color: var(--color-text); }
 footer { padding:2.5rem 0; text-align:center; color:var(--color-text-faint); font-size:0.85rem; border-top:1px solid var(--color-border); }
 
+@media (max-width:700px){
+  .resource-grid { grid-template-columns:1fr; }
+}
 @media (max-width:600px){
   .hero-grid { flex-direction:column-reverse; align-items:flex-start; }
   .hero-photo img { width:96px; height:96px; }
@@ -216,6 +228,59 @@ footer { padding:2.5rem 0; text-align:center; color:var(--color-text-faint); fon
         <p><strong>Remote Informatics Value:</strong> Demonstrates transition mapping and care coordination thinking.</p>
       </details>
     </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="container">
+    <h2>LinkedIn Career Resources</h2>
+    <p>Branded visuals supporting my honest, patient-to-professional healthcare operations positioning and student-developed portfolio work.</p>
+
+    <figure class="resource-banner">
+      <a href="./assets/linkedin/linkedin-banner.png" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/linkedin/linkedin-banner.png" alt="Kori Pickle Healthcare Operations Intelligence LinkedIn banner" width="1584" height="396" loading="lazy">
+      </a>
+      <figcaption><strong>LinkedIn Profile Banner</strong> — Healthcare Operations Intelligence, patient access, revenue-cycle readiness, and documentation quality.</figcaption>
+    </figure>
+
+    <div class="resource-grid">
+      <figure class="resource-card">
+        <a href="./assets/linkedin/healthcare-career-content-pillars.png" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin/healthcare-career-content-pillars.png" alt="Healthcare Career Content Pillars infographic covering patient access, workflow intelligence, and revenue-cycle readiness" width="1080" height="1350" loading="lazy">
+        </a>
+        <figcaption><strong>Healthcare Career Content Pillars</strong> — Five lanes for consistent LinkedIn visibility and recruiter-ready growth.</figcaption>
+      </figure>
+
+      <figure class="resource-card">
+        <a href="./assets/linkedin/workflow-signals-before-dashboard.png" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin/workflow-signals-before-dashboard.png" alt="Workflow Signals Before the Dashboard infographic showing visible issues, hidden causes, and operational action" width="1080" height="1350" loading="lazy">
+        </a>
+        <figcaption><strong>Workflow Signals Before the Dashboard</strong> — A branded post template for tracing visible problems back to hidden operational causes.</figcaption>
+      </figure>
+
+      <figure class="resource-card">
+        <a href="./assets/linkedin/resume-career-positioning-cover.png" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin/resume-career-positioning-cover.png" alt="Kori Pickle Resume and Career Positioning featured cover" width="1080" height="1350" loading="lazy">
+        </a>
+        <figcaption><strong>Resume + Career Positioning</strong> — An honest BSHA-candidate introduction to my recruiter-facing materials.</figcaption>
+      </figure>
+
+      <figure class="resource-card">
+        <a href="./assets/linkedin/healthcare-operations-portfolio-hub.png" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin/healthcare-operations-portfolio-hub.png" alt="Healthcare Operations Portfolio Hub cover for student-developed simulated no-PHI projects" width="1080" height="1350" loading="lazy">
+        </a>
+        <figcaption><strong>Healthcare Operations Portfolio Hub</strong> — Student-developed, simulated, no-PHI work demonstrating structure, thinking, and learning.</figcaption>
+      </figure>
+
+      <figure class="resource-card">
+        <a href="./assets/linkedin/comment-strategy-credibility.png" target="_blank" rel="noopener noreferrer">
+          <img src="./assets/linkedin/comment-strategy-credibility.png" alt="Comment Strategy That Builds Credibility infographic for healthcare operations engagement" width="1080" height="1350" loading="lazy">
+        </a>
+        <figcaption><strong>Comment Strategy That Builds Credibility</strong> — A three-part method for adding a thoughtful patient-to-professional voice.</figcaption>
+      </figure>
+    </div>
+
+    <p class="resource-note">Created by Kori Pickle. Portfolio-related visuals are student-developed, simulated, educational, and use no PHI.</p>
   </div>
 </section>
 
