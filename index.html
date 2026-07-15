@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kori Pickle — Health Informatics Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Work+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root, [data-theme="light"] {
+  --color-bg: #ffffff;
+  --color-surface: #f7f5f2;
+  --color-surface-2: #f0ede8;
+  --color-text: #1a1a1a;
+  --color-text-muted: #55524c;
+  --color-text-faint: #8a8680;
+  --color-border: #e2ddd5;
+  --color-primary: #ff8200;
+  --color-primary-hover: #d96e00;
+  --color-text-inverse: #ffffff;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+}
+[data-theme="dark"] {
+  --color-bg: #141312;
+  --color-surface: #1c1a18;
+  --color-surface-2: #232120;
+  --color-text: #f0eee9;
+  --color-text-muted: #b3aea5;
+  --color-text-faint: #7a756c;
+  --color-border: #33302c;
+  --color-primary: #ff9a33;
+  --color-primary-hover: #ffb15c;
+  --color-text-inverse: #141312;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.4);
+}
+* { box-sizing: border-box; margin:0; padding:0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Work Sans', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+h1,h2,h3 { font-family: 'Source Serif 4', serif; line-height: 1.2; color: var(--color-text); }
+h1 { font-size: clamp(2rem, 1.2rem + 3vw, 3.5rem); font-weight: 700; }
+h2 { font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem); font-weight: 600; margin-bottom: 1rem; }
+h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+p { color: var(--color-text-muted); margin-bottom: 1rem; max-width: 70ch; }
+a { color: var(--color-primary); text-decoration: none; }
+a:hover { color: var(--color-primary-hover); text-decoration: underline; }
+.container { max-width: 900px; margin: 0 auto; padding: 0 1.5rem; }
+header {
+  border-bottom: 1px solid var(--color-border);
+  padding: 1rem 0;
+  position: sticky; top: 0;
+  background: color-mix(in oklab, var(--color-bg) 90%, transparent);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+header .container { display:flex; justify-content:space-between; align-items:center; }
+.logo { display:flex; align-items:center; gap:0.5rem; font-weight:700; font-family:'Source Serif 4',serif; font-size:1.1rem; }
+.logo svg { width:28px; height:28px; }
+nav { display:flex; gap:1.5rem; }
+nav a { color: var(--color-text-muted); font-size:0.9rem; font-weight:500; }
+nav a:hover { color: var(--color-primary); text-decoration:none; }
+#theme-toggle { background:none; border:1px solid var(--color-border); border-radius:9999px; width:36px; height:36px; display:flex; align-items:center; justify-content:center; color:var(--color-text); cursor:pointer; }
+.hero { padding: 5rem 0 4rem; }
+.hero .tag { display:inline-block; background: color-mix(in oklab, var(--color-primary) 12%, var(--color-surface)); color: var(--color-primary); padding: 0.35rem 0.9rem; border-radius:9999px; font-size:0.8rem; font-weight:600; margin-bottom:1.5rem; }
+.hero h1 { margin-bottom:1rem; }
+.hero .subtitle { font-size:1.15rem; color:var(--color-text-muted); max-width:60ch; margin-bottom:2rem; }
+.btn-row { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn { display:inline-block; padding:0.75rem 1.5rem; border-radius:0.5rem; font-weight:600; font-size:0.95rem; transition: all 0.18s; }
+.btn-primary { background: var(--color-primary); color: var(--color-text-inverse); }
+.btn-primary:hover { background: var(--color-primary-hover); text-decoration:none; }
+.btn-ghost { border:1px solid var(--color-border); color: var(--color-text); }
+.btn-ghost:hover { background: var(--color-surface); text-decoration:none; }
+section { padding: 3.5rem 0; border-top: 1px solid var(--color-border); }
+.focus-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(180px,1fr)); gap:0.75rem; list-style:none; }
+.focus-grid li { background: var(--color-surface); border:1px solid var(--color-border); border-radius:0.5rem; padding:0.85rem 1rem; font-size:0.9rem; font-weight:500; }
+.case-study { background: var(--color-surface); border:1px solid var(--color-border); border-radius:0.75rem; padding:1.75rem; margin-bottom:1.5rem; }
+.case-study h3 { margin-bottom:0.75rem; }
+.case-study .meta { font-size:0.8rem; color:var(--color-text-faint); margin-bottom:0.75rem; text-transform:uppercase; letter-spacing:0.03em; }
+details summary { cursor:pointer; color:var(--color-primary); font-weight:600; margin-top:0.75rem; }
+details[open] summary { margin-bottom:0.75rem; }
+.dev-list { list-style:none; }
+.dev-list li { padding:0.6rem 0; border-bottom:1px solid var(--color-border); color:var(--color-text-muted); }
+.dev-list li:last-child { border-bottom:none; }
+.edu-block { background: var(--color-surface); border:1px solid var(--color-border); border-radius:0.75rem; padding:1.5rem; }
+.contact-links { list-style:none; margin-top:1rem; }
+.contact-links li { padding:0.5rem 0; }
+.contact-links strong { color: var(--color-text); }
+footer { padding:2.5rem 0; text-align:center; color:var(--color-text-faint); font-size:0.85rem; border-top:1px solid var(--color-border); }
+@media (max-width:600px){ nav { gap:0.9rem; } nav a { font-size:0.82rem; } .hero{padding:3rem 0 2.5rem;} section{padding:2.5rem 0;} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      Kori Pickle
+    </div>
+    <nav>
+      <a href="#focus">Focus</a>
+      <a href="#case-studies">Case Studies</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle dark mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="tag">Open to Remote Roles</span>
+    <h1>Kori Pickle</h1>
+    <p class="subtitle">Healthcare Operations &amp; Health Informatics Portfolio — a patient-to-professional perspective on workflow intelligence, documentation quality, and remote-ready healthcare operations support.</p>
+    <div class="btn-row">
+      <a href="#case-studies" class="btn btn-primary">View Case Studies</a>
+      <a href="mailto:koripickle1101@gmail.com" class="btn btn-ghost">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <h2>Professional Direction</h2>
+    <p>I am positioning for remote opportunities in health informatics, clinical data coordination, workflow analysis, documentation improvement, and healthcare operations support. I want to work with teams that care about getting the details right, because in healthcare, the details are the whole point.</p>
+    <p>Preventable denials are not random. They are patterns, and patterns can be studied, structured, and improved. My portfolio exists to show how I turn real healthcare experience into informatics thinking that is careful, credible, and genuinely useful.</p>
+  </div>
+</section>
+
+<section id="focus">
+  <div class="container">
+    <h2>Core Focus</h2>
+    <ul class="focus-grid">
+      <li>Health Informatics</li>
+      <li>Workflow Intelligence</li>
+      <li>Documentation Quality</li>
+      <li>Patient Access</li>
+      <li>Prior Authorization</li>
+      <li>Denial Prevention</li>
+      <li>Revenue Cycle Readiness</li>
+      <li>AI-Supported Workflow Design</li>
+    </ul>
+  </div>
+</section>
+
+<section id="case-studies">
+  <div class="container">
+    <h2>Case Studies</h2>
+
+    <div class="case-study">
+      <div class="meta">UT Medical Center · Patient Experience</div>
+      <h3>Translating Patient Feedback into Data Signals</h3>
+      <p>Front-line patient experience work surfaced recurring themes in communication clarity, wait-time transparency, and care ownership. This case study shows how I translated unstructured feedback into informatics-ready categories tied to real workflow touchpoints.</p>
+      <details>
+        <summary>Read full case study</summary>
+        <p><strong>Problem:</strong> Patient feedback was abundant but unstructured — scattered across conversations, notes, and surveys, with recurring complaints about communication clarity, wait-time uncertainty, and confusion about care ownership.</p>
+        <p><strong>Approach:</strong> I grouped recurring themes into measurable categories — communication clarity, wait-time transparency, and navigation/ownership — and mapped them to workflow touchpoints such as admission, discharge documentation, and staff handoffs.</p>
+        <p><strong>Impact:</strong> This work demonstrated how qualitative front-line data can be structured into trackable signals that inform quality improvement and informatics initiatives, including standardized patient education fields and clearer discharge templates.</p>
+        <p><strong>Remote Informatics Value:</strong> Demonstrates data framing, workflow awareness, and the ability to connect patient experience themes to formal quality and informatics measures — skills directly transferable to remote Health Informatics Analyst work.</p>
+      </details>
+    </div>
+
+    <div class="case-study">
+      <div class="meta">Patricia Neal Rehabilitation Center · Patient Experience</div>
+      <h3>Mapping Rehab Transitions &amp; Documentation Gaps</h3>
+      <p>Inpatient rehab transitions revealed high-risk points where documentation and patient understanding diverged. This case study maps the rehab journey as a data and communication workflow, identifying where information gets lost between care teams.</p>
+      <details>
+        <summary>Read full case study</summary>
+        <p><strong>Problem:</strong> Patients and families struggled to understand rehab goals, discharge plans, and who owned which part of their care — pointing to documentation gaps across transitions from acute care to rehab to home.</p>
+        <p><strong>Approach:</strong> I mapped the rehab journey step by step — admission, therapy, discharge planning, follow-up — and linked recurring patient questions to specific documentation touchpoints and communication gaps.</p>
+        <p><strong>Impact:</strong> Identified transitions of care as high-risk points for data breakdown, and highlighted the value of standardized, patient-friendly documentation to improve continuity of care.</p>
+        <p><strong>Remote Informatics Value:</strong> Demonstrates transition mapping, documentation alignment, and care coordination thinking — directly applicable to remote data quality review and workflow design roles.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="development">
+  <div class="container">
+    <h2>Current Development</h2>
+    <ul class="dev-list">
+      <li>Health informatics and clinical data support</li>
+      <li>Workflow mapping and transition-of-care thinking</li>
+      <li>SQL, Python, and structured analysis</li>
+      <li>Google Workspace, Notion, and GitHub-based professional systems</li>
+      <li>Responsible AI use for workflow design and analytical support</li>
+    </ul>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <h2>Education</h2>
+    <div class="edu-block">
+      <h3>University of Phoenix</h3>
+      <p>Bachelor of Science in Health Administration — Expected graduation: February 2027</p>
+      <p>Dean's List · GPA approximately 3.6–3.7 · Coursework in Quality Management and Health Care Information Systems</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <p>Open to fully remote opportunities in health informatics, clinical data coordination, and healthcare operations support.</p>
+    <ul class="contact-links">
+      <li><strong>Email:</strong> <a href="mailto:koripickle1101@gmail.com">koripickle1101@gmail.com</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/kori-p-865jct" target="_blank" rel="noopener noreferrer">linkedin.com/in/kori-p-865jct</a></li>
+      <li><strong>GitHub:</strong> <a href="https://github.com/koripickle1101-TN" target="_blank" rel="noopener noreferrer">github.com/koripickle1101-TN</a></li>
+      <li><strong>Location:</strong> Knoxville, Tennessee</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="container">Created by Kori Pickle</div>
+</footer>
+
+<script>
+(function(){
+  const t = document.getElementById('theme-toggle');
+  const r = document.documentElement;
+  let d = matchMedia('(prefers-color-scheme:dark)').matches ? 'dark' : 'light';
+  r.setAttribute('data-theme', d);
+  t.addEventListener('click', function(){
+    d = d === 'dark' ? 'light' : 'dark';
+    r.setAttribute('data-theme', d);
+  });
+})();
+</script>
+
+</body>
+</html>
