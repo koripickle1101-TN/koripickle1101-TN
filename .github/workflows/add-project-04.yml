@@ -1,10 +1,9 @@
 name: Add Portfolio Project 04
 
 on:
-  push:
+  pull_request:
     branches: [main]
-    paths:
-      - '.github/workflows/add-project-04.yml'
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -13,8 +12,10 @@ jobs:
   add-project:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
+      - name: Check out pull-request branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -24,7 +25,7 @@ jobs:
       - name: Add Project 04 to index
         run: python tools/add_project_04.py
 
-      - name: Commit portfolio update
+      - name: Commit portfolio update to branch
         run: |
           if git diff --quiet; then
             echo "No index update needed."
@@ -34,6 +35,4 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git commit -m "Add 837-to-835 case study to portfolio projects"
-          git push
-
-# Second push intentionally triggers this one-time workflow.
+          git push origin HEAD:${{ github.head_ref }}
