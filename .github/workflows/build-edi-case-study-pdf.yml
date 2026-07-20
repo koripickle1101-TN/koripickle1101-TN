@@ -1,0 +1,42 @@
+name: Build EDI Case Study PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/build-edi-case-study-pdf.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-pdf:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install PDF renderer
+        run: pip install weasyprint
+
+      - name: Generate branded portfolio PDF
+        run: |
+          mkdir -p assets/portfolio
+          weasyprint projects/healthcare-edi-control-chain-intelligence.html assets/portfolio/Kori_Pickle_Healthcare_EDI_Control_Chain_Intelligence_Case_Study_2026_2027.pdf
+
+      - name: Commit generated PDF
+        run: |
+          if git diff --quiet -- assets/portfolio/Kori_Pickle_Healthcare_EDI_Control_Chain_Intelligence_Case_Study_2026_2027.pdf; then
+            echo "No PDF update needed."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/portfolio/Kori_Pickle_Healthcare_EDI_Control_Chain_Intelligence_Case_Study_2026_2027.pdf
+          git commit -m "Generate Healthcare EDI case-study PDF"
+          git push
