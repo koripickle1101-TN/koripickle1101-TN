@@ -1,0 +1,46 @@
+name: Add Copilot Healthcare Portfolio Project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-copilot-healthcare-project.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Add Project 07 card
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          if 'microsoft-365-copilot-healthcare-workflow-adoption.html' in text:
+              print('Project 07 card already exists.')
+          else:
+              marker = '</article></div></div></section>\n<section class="block gallery">'
+              card = '<article class="card new"><span class="number">PROJECT 07 · NEW</span><h3>Microsoft 365 Copilot Healthcare Workflow Adoption &amp; Responsible Use Intelligence™</h3><p>Examines how Copilot-assisted work in Word, Excel, PowerPoint, Outlook, and Teams can support healthcare administrative workflows through approved-source controls, human review, privacy boundaries, synthetic UAT, measurable productivity, and verified closure. The project uses simulated no-PHI data and does not claim clinical, compliance, or Microsoft administration authority.</p><div class="tags"><span>Microsoft 365</span><span>Responsible AI</span><span>UAT</span><span>Workflow Adoption</span></div><a class="open" href="./projects/microsoft-365-copilot-healthcare-workflow-adoption.html">Open branded case study →</a></article>'
+              if marker not in text:
+                  raise SystemExit('Projects-to-gallery marker not found; index was not changed.')
+              text = text.replace(marker, card + marker, 1)
+              path.write_text(text, encoding='utf-8')
+              print('Project 07 card inserted.')
+          PY
+
+      - name: Remove one-time workflow
+        run: rm .github/workflows/add-copilot-healthcare-project.yml
+
+      - name: Commit portfolio update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/add-copilot-healthcare-project.yml
+          git commit -m "Add Microsoft 365 Copilot healthcare workflow project to portfolio"
+          git push
