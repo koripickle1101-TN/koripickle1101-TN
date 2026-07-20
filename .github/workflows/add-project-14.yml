@@ -1,0 +1,49 @@
+name: Add Project 14 to Portfolio Index
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-project-14.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    if: github.event.head_commit.message == 'Add Project 14 index updater'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Insert Project 14 card
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '<article class="card new"><span class="number">PROJECT 13 · NEW</span>'
+          card = '''<article class="card new"><span class="number">PROJECT 14 · NEW</span><h3>Medicaid Plan Variability &amp; Clean-Claim Readiness Intelligence™</h3><p>Separates State Medicaid from Managed Medicaid through a Tennessee-focused simulated case, rule-source hierarchy, exact-plan readiness chain, false-ready authorization scenario, control matrix, synthetic UAT, KPIs, responsible-AI boundaries, and recruiter-facing career proof.</p><div class="tags"><span>Medicaid</span><span>TennCare</span><span>Managed Care</span><span>Denial Prevention</span></div><a class="open" href="./projects/medicaid-plan-variability-clean-claim-readiness.html">Open branded case study →</a></article>'''
+
+          if 'PROJECT 14 · NEW' in text:
+              print('Project 14 is already present; no change needed.')
+          else:
+              start = text.find(marker)
+              if start == -1:
+                  raise SystemExit('Project 13 marker not found.')
+              close = text.find('</article>', start)
+              if close == -1:
+                  raise SystemExit('Project 13 closing tag not found.')
+              insert_at = close + len('</article>')
+              text = text[:insert_at] + '\n' + card + text[insert_at:]
+              path.write_text(text, encoding='utf-8')
+      - name: Commit portfolio update
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add Project 14 Medicaid portfolio card [skip ci]"
+          git push
