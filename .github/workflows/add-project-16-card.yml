@@ -1,0 +1,46 @@
+name: Add Project 16 Card
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-project-16-card.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    if: github.event.head_commit.message == 'Add Project 16 portfolio updater'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Insert Project 16 card
+        shell: python
+        run: |
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '<article class="card new"><span class="number">PROJECT 15 · NEW</span>'
+          card = '''<article class="card new"><span class="number">PROJECT 16 · NEW</span><h3>Medicare Coverage Pathway &amp; Claim Routing Intelligence™</h3><p>Converts Medicare Parts A, B, C, and D into an operational decision system for Original Medicare versus Medicare Advantage routing, inpatient and observation status, institutional and professional claim streams, Part D formulary controls, exception ownership, synthetic UAT, KPIs, and denial prevention.</p><div class="tags"><span>Medicare</span><span>Patient Status</span><span>Claim Routing</span><span>Denial Prevention</span></div><a class="open" href="./projects/medicare-coverage-pathway-claim-routing-intelligence.html">Open branded case study →</a></article>'''
+          if 'PROJECT 16 · NEW' in text:
+              print('Project 16 already present.')
+          else:
+              start = text.find(marker)
+              if start == -1:
+                  raise SystemExit('Project 15 marker not found.')
+              close = text.find('</article>', start)
+              if close == -1:
+                  raise SystemExit('Project 15 closing tag not found.')
+              insert_at = close + len('</article>')
+              path.write_text(text[:insert_at] + '\n' + card + text[insert_at:], encoding='utf-8')
+      - name: Commit update
+        run: |
+          if git diff --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Add Project 16 Medicare portfolio card [skip ci]"
+          git push
