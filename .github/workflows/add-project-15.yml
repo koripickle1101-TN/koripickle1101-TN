@@ -1,0 +1,56 @@
+name: Add Project 15 to Portfolio
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-project-15.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-update:
+    if: github.event.head_commit.message == 'Add Project 15 index and PDF updater'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF dependency
+        run: python -m pip install --disable-pip-version-check reportlab
+      - name: Generate branded Project 15 PDF
+        run: python scripts/create_project_15_pdf.py
+      - name: Insert Project 15 card
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '<article class="card new"><span class="number">PROJECT 14 · NEW</span>'
+          card = '''<article class="card new"><span class="number">PROJECT 15 · NEW</span><h3>Multi-Payer Rule Translation &amp; Claim Readiness Intelligence™</h3><p>Compares Medicare, Medicaid, and commercial payer workflows through a three-path simulated case, payer-order controls, exact-plan verification, network and authorization readiness, documentation requirements, a payer-rule translation matrix, synthetic UAT, KPIs, and recruiter-facing career proof.</p><div class="tags"><span>Medicare</span><span>Medicaid</span><span>Commercial Payers</span><span>Claim Readiness</span></div><a class="open" href="./projects/multi-payer-claim-readiness-intelligence.html">Open branded case study →</a></article>'''
+
+          if 'PROJECT 15 · NEW' in text:
+              print('Project 15 is already present; no index change needed.')
+          else:
+              start = text.find(marker)
+              if start == -1:
+                  raise SystemExit('Project 14 marker not found.')
+              close = text.find('</article>', start)
+              if close == -1:
+                  raise SystemExit('Project 14 closing tag not found.')
+              insert_at = close + len('</article>')
+              text = text[:insert_at] + '\n' + card + text[insert_at:]
+              path.write_text(text, encoding='utf-8')
+      - name: Commit portfolio update
+        run: |
+          if git diff --quiet && git ls-files --error-unmatch projects/Kori_Pickle_Multi_Payer_Claim_Readiness_Case_Study_2026.pdf >/dev/null 2>&1; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html projects/Kori_Pickle_Multi_Payer_Claim_Readiness_Case_Study_2026.pdf
+          git commit -m "Add Project 15 multi-payer portfolio card and PDF [skip ci]"
+          git push
