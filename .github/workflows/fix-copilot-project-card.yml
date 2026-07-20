@@ -1,0 +1,41 @@
+name: Fix Copilot Portfolio Card Markup
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/fix-copilot-project-card.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Correct Project 06 and 07 article boundaries
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          old1 = 'href="./projects/documentation-to-code-integrity-claim-readiness.html">Open branded case study →</a><article class="card new"><span class="number">PROJECT 07'
+          new1 = 'href="./projects/documentation-to-code-integrity-claim-readiness.html">Open branded case study →</a></article><article class="card new"><span class="number">PROJECT 07'
+          old2 = 'href="./projects/microsoft-365-copilot-healthcare-workflow-adoption.html">Open branded case study →</a></article></article></div></div></section>'
+          new2 = 'href="./projects/microsoft-365-copilot-healthcare-workflow-adoption.html">Open branded case study →</a></article></div></div></section>'
+          if old1 not in text or old2 not in text:
+              raise SystemExit('Expected malformed markup was not found.')
+          text = text.replace(old1, new1, 1).replace(old2, new2, 1)
+          path.write_text(text, encoding='utf-8')
+          print('Project card boundaries corrected.')
+          PY
+      - name: Remove one-time workflow
+        run: rm .github/workflows/fix-copilot-project-card.yml
+      - name: Commit correction
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/fix-copilot-project-card.yml
+          git commit -m "Fix Microsoft 365 Copilot portfolio card markup"
+          git push
