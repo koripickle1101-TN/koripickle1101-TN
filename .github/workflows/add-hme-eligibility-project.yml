@@ -1,0 +1,41 @@
+name: Add HME Eligibility Portfolio Project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-hme-eligibility-project.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Project 09 card
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          if 'PROJECT 09 · NEW' in text:
+              print('Project 09 already present.')
+          else:
+              old = 'href="./projects/digital-pathology-workflow-readiness.html">Open branded case study →</a></article></div></div></section>'
+              new = 'href="./projects/digital-pathology-workflow-readiness.html">Open branded case study →</a></article><article class="card new"><span class="number">PROJECT 09 · NEW</span><h3>HME Eligibility &amp; Recurring Coverage Control Intelligence™</h3><p>Follows a simulated home medical equipment workflow from intake and 270/271 benefit verification through item-specific requirements, delivery evidence, coordination of benefits, recurring re-verification, patient communication, and verified closure. The project includes synthetic UAT, exception ownership, KPIs, and denial-prevention controls without claiming billing or payer authority.</p><div class="tags"><span>HME / DMEPOS</span><span>Eligibility</span><span>COB</span><span>Recurring Coverage</span></div><a class="open" href="./projects/hme-eligibility-recurring-coverage-control.html">Open branded case study →</a></article></div></div></section>'
+              if old not in text:
+                  raise SystemExit('Expected Project 08 closing marker was not found.')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+              print('Project 09 card added.')
+          PY
+      - name: Remove one-time workflow
+        run: rm .github/workflows/add-hme-eligibility-project.yml
+      - name: Commit portfolio update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/add-hme-eligibility-project.yml
+          git commit -m "Add HME eligibility workflow project to portfolio"
+          git push
