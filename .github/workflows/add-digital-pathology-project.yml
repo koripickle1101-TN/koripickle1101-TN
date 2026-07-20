@@ -1,0 +1,41 @@
+name: Add Digital Pathology Portfolio Project
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-digital-pathology-project.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-index:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add Project 08 card
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          if 'PROJECT 08 · NEW' in text:
+              print('Project 08 already present.')
+          else:
+              old = 'href="./projects/microsoft-365-copilot-healthcare-workflow-adoption.html">Open branded case study →</a></article></div></div></section>'
+              new = 'href="./projects/microsoft-365-copilot-healthcare-workflow-adoption.html">Open branded case study →</a></article><article class="card new"><span class="number">PROJECT 08 · NEW</span><h3>Digital Pathology Workflow Readiness &amp; Quality Control Intelligence™</h3><p>Follows a simulated pathology case from accession and glass-slide preparation through whole-slide imaging, metadata reconciliation, image-quality control, digital review, reporting, archive, and verified closure. The project includes operational controls, synthetic UAT, interface exception ownership, KPIs, and responsible-AI boundaries without claiming pathology authority.</p><div class="tags"><span>Digital Pathology</span><span>Whole-Slide Imaging</span><span>Data Quality</span><span>Implementation</span></div><a class="open" href="./projects/digital-pathology-workflow-readiness.html">Open branded case study →</a></article></div></div></section>'
+              if old not in text:
+                  raise SystemExit('Expected Project 07 closing marker was not found.')
+              path.write_text(text.replace(old, new, 1), encoding='utf-8')
+              print('Project 08 card added.')
+          PY
+      - name: Remove one-time workflow
+        run: rm .github/workflows/add-digital-pathology-project.yml
+      - name: Commit portfolio update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html .github/workflows/add-digital-pathology-project.yml
+          git commit -m "Add Digital Pathology workflow project to portfolio"
+          git push
