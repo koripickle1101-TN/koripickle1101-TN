@@ -1,0 +1,53 @@
+name: Add Project 20 to Portfolio
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-project-20.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-update:
+    if: github.event.head_commit.message == 'Add Project 20 portfolio updater'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF renderer
+        run: python -m pip install --disable-pip-version-check weasyprint
+      - name: Generate branded Project 20 PDF
+        run: weasyprint projects/healthcare-consulting-problem-framing-implementation-readiness.html projects/Kori_Pickle_Healthcare_Consulting_Problem_Framing_Case_Study_2026.pdf
+      - name: Insert Project 20 card
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '<article class="card new"><span class="number">PROJECT 19 · NEW</span>'
+          card = '''<article class="card new"><span class="number">PROJECT 20 · NEW</span><h3>Healthcare Consulting Problem-Framing &amp; Implementation Readiness Intelligence™</h3><p>Translates a broad healthcare consulting request into a structured simulated engagement using problem framing, current-state mapping, issue-tree analysis, stakeholder governance, future-state workflow design, implementation-readiness controls, responsible-AI boundaries, synthetic UAT, change management, KPIs, and a 30-60-90 day roadmap.</p><div class="tags"><span>Healthcare Consulting</span><span>Problem Framing</span><span>Implementation</span><span>Change Management</span></div><a class="open" href="./projects/healthcare-consulting-problem-framing-implementation-readiness.html">Open branded case study →</a></article>'''
+
+          if 'PROJECT 20 · NEW' in text:
+              print('Project 20 is already present; no index change needed.')
+          else:
+              start = text.find(marker)
+              if start == -1:
+                  raise SystemExit('Project 19 marker not found.')
+              close = text.find('</article>', start)
+              if close == -1:
+                  raise SystemExit('Project 19 closing tag not found.')
+              insert_at = close + len('</article>')
+              text = text[:insert_at] + '\n' + card + text[insert_at:]
+              path.write_text(text, encoding='utf-8')
+      - name: Remove one-time updater and commit portfolio changes
+        run: |
+          rm -f .github/workflows/add-project-20.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add Project 20 healthcare consulting portfolio card and PDF [skip ci]"
+          git push
