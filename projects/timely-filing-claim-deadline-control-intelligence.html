@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Student-developed, simulated, no-PHI timely filing and claim deadline control case study by Kori Pickle, BSHA Candidate.">
+<title>Timely Filing Deadline & Claim Submission Control Intelligence | Kori Pickle</title>
+<style>
+:root{--o:#FF8200;--b:#000000;--w:#FFFFFF;--serif:"Liberation Serif",Georgia,serif;--sans:"DejaVu Sans",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--w);color:var(--b);font-family:var(--sans);line-height:1.48}
+a{color:inherit}
+@page{size:Letter;margin:.42in;@bottom-left{content:"Created by Kori Pickle | Healthcare Operations Intelligence Engine\2122";font:8pt var(--sans);color:#000}@bottom-right{content:"Page " counter(page) " of " counter(pages);font:8pt var(--sans);color:#000}}
+.page{min-height:9.95in;page-break-after:always;position:relative;padding:.06in .04in .04in}
+.page:last-child{page-break-after:auto}
+.web-nav{display:none}
+.eyebrow{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--o);display:flex;align-items:center;gap:9px}
+.eyebrow:before{content:"";width:26px;height:2px;background:var(--o);display:inline-block}
+h1,h2,h3{font-family:var(--serif);line-height:1.02;margin:0}
+h1{font-size:34pt;letter-spacing:-.035em}
+h2{font-size:26pt;letter-spacing:-.02em}
+h3{font-size:17pt}
+p{font-size:10pt;margin:0}
+.lead{font-size:12pt;line-height:1.55}
+.orange{color:var(--o)}
+.toprule{height:7px;background:var(--o);margin-bottom:18px}
+.blackbar{background:var(--b);color:var(--w);padding:14px 18px;border:2px solid var(--o)}
+.blackbar strong{color:var(--o);font-size:8pt;letter-spacing:.13em;text-transform:uppercase}
+.blackbar p{font-family:var(--serif);font-size:19pt;line-height:1.08;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{border:1px solid var(--b);border-top:6px solid var(--o);padding:15px;background:var(--w)}
+.card.black{background:var(--b);color:var(--w)}
+.card h3{margin-bottom:8px}
+.card p,.card li{font-size:9.2pt}
+.card ul{padding-left:17px;margin:8px 0 0}
+.callout{border-left:5px solid var(--o);padding:12px 14px;background:#fff;font-family:var(--serif);font-size:16pt;line-height:1.18}
+.note{border:1px solid var(--b);padding:12px 14px;font-size:8.8pt;font-weight:600}
+.section-head{display:block;margin-bottom:18px}
+.section-head .side{max-width:100%;font-size:8.5pt;margin-top:8px;border-left:3px solid var(--o);padding-left:9px}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{border:1px solid currentColor;padding:5px 7px;font-size:7pt;font-weight:700;text-transform:uppercase}
+.button{display:inline-block;margin-top:14px;background:var(--b);color:var(--w);border:2px solid var(--o);padding:9px 13px;text-decoration:none;font-size:8pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px}
+.step{text-align:center;position:relative}
+.node{width:54px;height:54px;border:3px solid var(--o);box-shadow:inset 0 0 0 3px var(--w),inset 0 0 0 4px var(--b);border-radius:50%;display:grid;place-items:center;margin:auto;font-family:var(--serif);font-size:16pt;font-weight:700;background:var(--w)}
+.step strong{display:block;font-size:7pt;margin-top:6px;line-height:1.2}
+.arrow{font-size:18pt;color:var(--o);align-self:center;text-align:center}
+table{width:100%;border-collapse:collapse;margin-top:14px;table-layout:fixed}
+th,td{border:1px solid var(--b);padding:7px;vertical-align:top;text-align:left;font-size:8pt;line-height:1.35}
+th{background:var(--b);color:var(--w);font-weight:700}
+.small td,.small th{font-size:7.35pt;padding:6px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.kpi{border:1px solid var(--b);padding:12px;text-align:center;border-top:6px solid var(--o)}
+.kpi b{font-family:var(--serif);font-size:24pt;display:block;line-height:1}
+.kpi span{font-size:7.5pt;font-weight:700;text-transform:uppercase}
+.cover{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+.cover-left{display:flex;flex-direction:column;justify-content:space-between}
+.cover-box{border:1px solid var(--b);padding:22px;box-shadow:10px 10px 0 -7px var(--o);display:flex;flex-direction:column;justify-content:space-between;min-height:8.7in}
+.cover-title{font-family:var(--serif);font-size:35pt;font-weight:700;line-height:.98;margin-top:18px}
+.cover-sub{font-size:10pt;margin-top:18px;line-height:1.55}
+.signature{font-size:9pt;font-weight:700}
+.truth{font-size:8.3pt;border-left:4px solid var(--o);padding-left:10px;margin-top:14px}
+.timeline{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:16px}
+.tbox{border:1px solid var(--b);padding:7px 4px;text-align:center;min-height:72px;display:flex;flex-direction:column;justify-content:center}
+.tbox b{font-family:var(--serif);font-size:13pt;color:var(--o)}
+.tbox span{font-size:6.5pt;font-weight:700;margin-top:3px}
+.matrix-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.legend{border:1px solid var(--b);padding:8px;font-size:7.4pt}.legend b{display:block;color:var(--o)}
+.footer-note{position:static;font-size:7.2pt;border-top:1px solid var(--b);padding-top:6px;margin-top:14px}
+.refs li{font-size:8pt;margin-bottom:7px;line-height:1.35}
+.refs a{word-break:break-all;color:var(--o);font-weight:700}
+@media screen{
+ body{max-width:1120px;margin:auto;padding:20px}.page{min-height:auto;padding:38px 30px;margin-bottom:20px;border:1px solid var(--b)}.web-nav{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--b);margin-bottom:18px}.web-nav a{text-decoration:none;font-size:12px;font-weight:700}.footer-note{position:static;margin-top:20px}.cover-box{min-height:740px}
+}
+</style>
+</head>
+<body>
+<div class="web-nav"><a href="../index.html">Kori Pickle</a><a href="../index.html#projects">Back to portfolio projects</a></div>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="cover">
+  <div class="cover-left">
+    <div>
+      <div class="eyebrow">Healthcare Operations Intelligence Engine&trade;</div>
+      <div class="cover-title">Timely Filing Deadline &amp; <span class="orange">Claim Submission Control Intelligence&trade;</span></div>
+      <p class="cover-sub">A student-developed case study that converts a simplified timely-filing infographic into a controlled healthcare operations workflow for payer-rule verification, claim readiness, deadline calculation, submission evidence, rejection recovery, denial prevention, patient financial safeguards, and verified closure.</p>
+      <div class="tagrow"><span class="tag">Revenue Cycle</span><span class="tag">Claims Support</span><span class="tag">Denial Prevention</span><span class="tag">Data Quality</span><span class="tag">No PHI</span></div><a class="button" href="./Kori_Pickle_Timely_Filing_Claim_Deadline_Control_Case_Study_2026.pdf" target="_blank">Download branded PDF</a>
+    </div>
+    <div>
+      <div class="blackbar"><strong>Core question</strong><p>Where did the claim workflow first lose control before the deadline expired?</p></div>
+      <p class="truth">Created by Kori Pickle, BSHA Candidate, University of Phoenix. This project is educational, simulated, and does not use PHI, employer data, payer portal data, claims data, contracts, or real patient information.</p>
+    </div>
+  </div>
+  <div class="cover-box">
+    <div>
+      <div class="eyebrow">Portfolio Project 22 | 2026-2027</div>
+      <h2 style="margin-top:18px">A deadline is not a single date.</h2>
+      <p class="lead" style="margin-top:18px">It is the final output of a chain of decisions: exact payer and product identification, effective policy retrieval, date-of-service logic, claim type, coordination of benefits, clean-claim readiness, transmission, acceptance evidence, rejection handling, and escalation.</p>
+    </div>
+    <div>
+      <div class="callout">A claim can be submitted "on time" operationally and still fail if it reaches the wrong payer, lacks a clean-claim element, is rejected without follow-up, or has no proof of receipt.</div>
+      <p class="signature" style="margin-top:18px">Kori Pickle | Patient-to-Professional Healthcare Operations Learner</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Executive breakdown</div><h2 style="margin-top:10px">What the LinkedIn post explains - and what it leaves out.</h2></div><p class="side">The post is useful as an awareness prompt. It should not be used as a universal payer deadline reference.</p></div>
+<div class="grid2">
+  <article class="card"><h3>What it gets right</h3><ul><li>Claims must be filed within payer-defined timeframes.</li><li>Late filing can create denials and payment loss.</li><li>Requirements vary by payer and plan.</li><li>Teams should verify payer-specific guidance.</li></ul></article>
+  <article class="card black"><h3>What is operationally missing</h3><ul><li>Participation agreement and contract terms</li><li>Original versus corrected versus secondary claim rules</li><li>Date-of-service versus discharge-date logic</li><li>State and product variation</li><li>Proof of submission and clearinghouse acceptance</li><li>Rejected-claim recovery and escalation ownership</li></ul></article>
+  <article class="card"><h3>Why the table is risky</h3><p>Brand-wide ranges can look authoritative even when the real deadline depends on the exact product, network status, provider agreement, claim type, effective date, and applicable law. A static social-media chart may become outdated without warning.</p></article>
+  <article class="card black"><h3>Important correction</h3><p>The infographic states that Medicare has "no filing limit for secondary claims." CMS guidance supports a one-calendar-year Medicare filing rule with limited exceptions; it does not support using a blanket no-limit statement as an operational rule.</p></article>
+</div>
+<div class="callout" style="margin-top:18px">Use the infographic to ask better questions - not to calculate a live claim deadline.</div>
+<div class="note" style="margin-top:14px">Career relevance: This distinction demonstrates evidence validation, policy-source discipline, revenue-cycle awareness, and the ability to translate public content into a safer operational control.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Authoritative rule variability</div><h2 style="margin-top:10px">The exact source matters more than the payer logo.</h2></div><p class="side">Examples below are educational and current to the cited 2026 sources. Always validate the live policy and contract before operational use.</p></div>
+<table>
+<thead><tr><th style="width:18%">Program / payer example</th><th style="width:23%">What the authoritative source says</th><th style="width:27%">Operational implication</th><th>Control lesson</th></tr></thead>
+<tbody>
+<tr><td><b>Original Medicare</b></td><td>Submit to the correct Medicare Administrative Contractor no later than one calendar year after the date of service, subject to limited exceptions.</td><td>A general "12 months" label is incomplete unless the team confirms the correct contractor, date logic, and exception documentation.</td><td>Store the source, effective date, deadline basis, and exception rationale.</td></tr>
+<tr><td><b>TRICARE</b></td><td>Claims in the United States and U.S. territories generally must be filed within one year of service; overseas claims generally have three years.</td><td>Location changes the filing window. A single 365-day statement does not cover every TRICARE scenario.</td><td>Capture service location and beneficiary context before calculating the deadline.</td></tr>
+<tr><td><b>Cigna Healthcare</b></td><td>The public provider page lists 90 days for participating providers and 180 days for out-of-network providers, with stated exceptions.</td><td>Network participation and coordination-of-benefits circumstances may change the rule.</td><td>Exact network status and exception evidence are required fields.</td></tr>
+<tr><td><b>UnitedHealthcare</b></td><td>The 2026 administrative guide directs providers to their internal contracting contact or Participation Agreement for timely-filing information.</td><td>A generic logo-based deadline may conflict with the controlling agreement.</td><td>Contract source hierarchy must be built into the workflow.</td></tr>
+<tr><td><b>TennCare / MCO workflows</b></td><td>TennCare directs providers to applicable managed-care organization processes and has announced a future filing-limit change for certain claim categories effective July 1, 2027.</td><td>State Medicaid rules, MCO manuals, claim categories, and effective dates can change.</td><td>Policy monitoring and effective-date version control are essential.</td></tr>
+</tbody>
+</table>
+<div class="grid3" style="margin-top:16px">
+  <div class="card"><h3>Rule source</h3><p>Contract, provider manual, government manual, portal notice, or controlling law.</p></div>
+  <div class="card black"><h3>Rule context</h3><p>Plan, product, network, claim type, date logic, state, and effective date.</p></div>
+  <div class="card"><h3>Rule evidence</h3><p>Source title, version, retrieval date, screenshot or document reference, and reviewer.</p></div>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Failure-origin map</div><h2 style="margin-top:10px">The denial appears at the end. Control is often lost much earlier.</h2>
+<div class="timeline">
+  <div class="tbox"><b>01</b><span>Service completed</span></div>
+  <div class="tbox"><b>02</b><span>Charge captured</span></div>
+  <div class="tbox"><b>03</b><span>Documentation complete</span></div>
+  <div class="tbox"><b>04</b><span>Payer identified</span></div>
+  <div class="tbox"><b>05</b><span>Rule verified</span></div>
+  <div class="tbox"><b>06</b><span>Claim created</span></div>
+  <div class="tbox"><b>07</b><span>Claim submitted</span></div>
+  <div class="tbox"><b>08</b><span>Receipt accepted</span></div>
+  <div class="tbox"><b>09</b><span>Rejection resolved</span></div>
+  <div class="tbox"><b>10</b><span>Closure verified</span></div>
+</div>
+<table style="margin-top:18px">
+<thead><tr><th>Failure point</th><th>Visible downstream problem</th><th>Why the deadline control failed</th><th>Patient / operational consequence</th></tr></thead>
+<tbody>
+<tr><td>Incorrect product selected</td><td>Claim routed to wrong payer or address</td><td>The workflow used a payer brand instead of the exact plan and contract.</td><td>Delayed adjudication, avoidable rework, possible patient bill.</td></tr>
+<tr><td>Documentation incomplete</td><td>Claim held in work queue</td><td>No aging threshold or escalation owner existed.</td><td>Deadline days consumed before the claim was even created.</td></tr>
+<tr><td>Static deadline table</td><td>Incorrect filing date entered</td><td>Source version and effective date were not controlled.</td><td>False sense of readiness and missed filing window.</td></tr>
+<tr><td>Transmission only</td><td>Rejected claim assumed filed</td><td>"Sent" was treated as "accepted" without acknowledgement review.</td><td>Claim never entered payer adjudication.</td></tr>
+<tr><td>No proof of original filing</td><td>Late-filing dispute cannot be supported</td><td>Submission evidence was not stored with the claim record.</td><td>Contractual write-off or lost reimbursement exposure.</td></tr>
+<tr><td>COB hold without reset logic</td><td>Secondary claim ages silently</td><td>Primary EOB date and secondary filing rule were not linked.</td><td>Patient confusion and delayed balance resolution.</td></tr>
+</tbody>
+</table>
+<div class="blackbar" style="margin-top:18px"><strong>First loss of control</strong><p>The organization treated timely filing as a static payer lookup instead of a source-controlled, evidence-based, closed-loop workflow.</p></div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Simulated no-PHI case</div><h2 style="margin-top:10px">A 24-claim queue with hidden deadline exposure.</h2></div><p class="side">All values are synthetic and created for educational demonstration only.</p></div>
+<p class="lead">A simulated specialty practice reviews a mixed-payer claim queue. Staff have a spreadsheet containing payer names and broad filing ranges, but the file does not record the exact product, contract source, effective date, claim type, acknowledgement status, or proof of original submission.</p>
+<div class="kpis">
+  <div class="kpi"><b>24</b><span>synthetic claims</span></div>
+  <div class="kpi"><b>7</b><span>within 30 days</span></div>
+  <div class="kpi"><b>5</b><span>missing rule source</span></div>
+  <div class="kpi"><b>4</b><span>no receipt evidence</span></div>
+</div>
+<table class="small">
+<thead><tr><th>ID</th><th>Payer context</th><th>Claim status</th><th>Days remaining</th><th>Control gap</th><th>Priority</th></tr></thead>
+<tbody>
+<tr><td>TF-003</td><td>Commercial participating</td><td>Documentation hold</td><td>11</td><td>No owner; rule copied from old spreadsheet</td><td>Critical</td></tr>
+<tr><td>TF-006</td><td>Original Medicare</td><td>EDI rejected</td><td>17</td><td>Rejection not routed to correction queue</td><td>Critical</td></tr>
+<tr><td>TF-009</td><td>TRICARE U.S.</td><td>Ready to submit</td><td>22</td><td>No stored service-location evidence</td><td>High</td></tr>
+<tr><td>TF-012</td><td>Commercial secondary</td><td>Waiting for primary EOB</td><td>Unknown</td><td>Secondary rule and trigger date not documented</td><td>High</td></tr>
+<tr><td>TF-015</td><td>Medicaid MCO</td><td>Corrected claim</td><td>14</td><td>Original claim receipt not linked</td><td>Critical</td></tr>
+<tr><td>TF-018</td><td>Commercial out-of-network</td><td>Submitted</td><td>28</td><td>Clearinghouse acceptance not confirmed</td><td>High</td></tr>
+<tr><td>TF-021</td><td>Medicare Advantage</td><td>Provider edit hold</td><td>19</td><td>Deadline assumed from Original Medicare</td><td>Critical</td></tr>
+<tr><td>TF-024</td><td>Commercial participating</td><td>Pending attachment</td><td>26</td><td>No internal safety deadline</td><td>High</td></tr>
+</tbody>
+</table>
+<div class="grid2" style="margin-top:16px">
+  <article class="card black"><h3>Baseline finding</h3><p>The most dangerous records were not necessarily the oldest. They were the claims with uncertain rule sources, silent rejections, unresolved ownership, or missing proof.</p></article>
+  <article class="card"><h3>Patient-to-professional insight</h3><p>A missed filing deadline can become a patient experience problem when balances are delayed, corrected late, transferred incorrectly, or communicated without clear explanation.</p></article>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Control redesign</div><h2 style="margin-top:10px">Timely Filing Closed-Loop Control Model&trade;</h2>
+<div class="flow">
+  <div class="step"><div class="node">01</div><strong>IDENTIFY<br>exact payer product</strong></div>
+  <div class="step"><div class="node">02</div><strong>VERIFY<br>authoritative rule</strong></div>
+  <div class="step"><div class="node">03</div><strong>CALCULATE<br>external + safety dates</strong></div>
+  <div class="step"><div class="node">04</div><strong>PREPARE<br>clean claim evidence</strong></div>
+  <div class="step"><div class="node">05</div><strong>SUBMIT<br>approved channel</strong></div>
+</div>
+<div class="flow" style="margin-top:14px">
+  <div class="step"><div class="node">06</div><strong>CAPTURE<br>receipt evidence</strong></div>
+  <div class="step"><div class="node">07</div><strong>MONITOR<br>acknowledgement</strong></div>
+  <div class="step"><div class="node">08</div><strong>CORRECT<br>rejection or defect</strong></div>
+  <div class="step"><div class="node">09</div><strong>ESCALATE<br>aging exception</strong></div>
+  <div class="step"><div class="node">10</div><strong>CLOSE<br>adjudication verified</strong></div>
+</div>
+<table style="margin-top:20px">
+<thead><tr><th>Control field</th><th>Required content</th><th>Why it matters</th><th>Escalation trigger</th></tr></thead>
+<tbody>
+<tr><td>Exact coverage context</td><td>Payer, product, plan, network status, state, line of business</td><td>Prevents brand-level assumptions.</td><td>Coverage context incomplete or conflicting.</td></tr>
+<tr><td>Claim type</td><td>Original, corrected, replacement, void, secondary, appeal, reconsideration</td><td>Different pathways may have different timeframes.</td><td>Claim type unknown or changed after submission.</td></tr>
+<tr><td>Deadline basis</td><td>Date of service, discharge, primary adjudication, notice, or contract-defined event</td><td>Ensures the correct start date is used.</td><td>Trigger date is unavailable or disputed.</td></tr>
+<tr><td>Authoritative source</td><td>Contract/manual title, section, version, effective date, reviewer</td><td>Supports traceability and policy validation.</td><td>No current source or source conflict.</td></tr>
+<tr><td>Internal safety date</td><td>External deadline minus approved buffer</td><td>Creates time for correction and resubmission.</td><td>Claim crosses high-risk aging threshold.</td></tr>
+<tr><td>Submission evidence</td><td>Transaction control number, clearinghouse report, portal receipt, timestamp</td><td>Distinguishes "sent" from "accepted."</td><td>No acknowledgement within defined interval.</td></tr>
+<tr><td>Closure evidence</td><td>Accepted, adjudicated, corrected, appealed, or authorized exception</td><td>Prevents silent work-queue abandonment.</td><td>Claim remains unresolved after escalation.</td></tr>
+</tbody>
+</table>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Deadline evidence matrix</div><h2 style="margin-top:10px">A safer alternative to a static payer cheat sheet.</h2></div><p class="side">The matrix stores evidence and logic instead of relying on memory or a social-media table.</p></div>
+<table class="small">
+<thead><tr><th>Field</th><th>Example value</th><th>Validation requirement</th><th>Status vocabulary</th></tr></thead>
+<tbody>
+<tr><td>Coverage context</td><td>Cigna participating commercial plan</td><td>Verify ID card, eligibility result, contract/network context</td><td>Confirmed / Conflict / Unresolved</td></tr>
+<tr><td>Rule source</td><td>Cigna provider claims page</td><td>Record retrieval date and applicable exception</td><td>Current / Superseded / Unknown</td></tr>
+<tr><td>External deadline</td><td>Calculated from authoritative rule</td><td>Formula review by second person or automated validation</td><td>Verified / Review needed</td></tr>
+<tr><td>Internal safety date</td><td>30 days before external deadline</td><td>Organization-defined policy, not payer rule</td><td>Safe / Warning / Critical</td></tr>
+<tr><td>Submission channel</td><td>837 EDI via approved clearinghouse</td><td>Correct payer ID and transaction format</td><td>Ready / Blocked / Submitted</td></tr>
+<tr><td>Receipt evidence</td><td>999/277CA or clearinghouse acceptance report</td><td>Confirm acceptance, not only transmission</td><td>Accepted / Rejected / Pending</td></tr>
+<tr><td>Correction pathway</td><td>Corrected claim linked to original control number</td><td>Follow exact payer and contract requirements</td><td>Open / Resubmitted / Closed</td></tr>
+<tr><td>COB evidence</td><td>Primary EOB and primary processing date</td><td>Confirm secondary rule trigger and required attachment</td><td>Waiting / Ready / Submitted</td></tr>
+<tr><td>Exception evidence</td><td>Retroactive eligibility notice or payer-directed resubmission</td><td>Store documentation and approval pathway</td><td>Potential / Validated / Denied</td></tr>
+<tr><td>Closure</td><td>Adjudicated or documented final resolution</td><td>Patient balance safeguards and denial feedback completed</td><td>Closed / Follow-up / Escalated</td></tr>
+</tbody>
+</table>
+<div class="matrix-legend">
+  <div class="legend"><b>SAFE</b>More than 45 days before internal safety date; source and evidence complete.</div>
+  <div class="legend"><b>WARNING</b>15-45 days remaining or one unresolved control field.</div>
+  <div class="legend"><b>CRITICAL</b>Fewer than 15 days, rejected, missing source, or no accountable owner.</div>
+  <div class="legend"><b>EXCEPTION</b>Deadline passed or rule disputed; formal review and evidence pathway required.</div>
+</div>
+<div class="callout" style="margin-top:18px">The deadline field should never be editable without the source, trigger date, claim type, and reviewer changing with it.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Synthetic UAT</div><h2 style="margin-top:10px">Test the workflow before trusting it.</h2>
+<table>
+<thead><tr><th style="width:12%">Test</th><th style="width:24%">Scenario</th><th style="width:26%">Expected control behavior</th><th>Pass evidence</th></tr></thead>
+<tbody>
+<tr><td>UAT-01</td><td>Payer logo matches multiple products with different contracts.</td><td>System blocks deadline calculation until exact product and network context are confirmed.</td><td>Blocked status, reason code, owner, timestamp.</td></tr>
+<tr><td>UAT-02</td><td>Claim is transmitted but receives a clearinghouse rejection.</td><td>Status changes to rejected; deadline clock remains active; correction task routes to named owner.</td><td>Rejection code, correction due date, resubmission receipt.</td></tr>
+<tr><td>UAT-03</td><td>Original Medicare claim is 20 days from external deadline.</td><td>Critical alert activates and requires daily follow-up until acceptance or documented exception.</td><td>Alert history and closure evidence.</td></tr>
+<tr><td>UAT-04</td><td>Secondary claim is waiting for primary EOB.</td><td>Record stores primary processing date, secondary rule source, attachment requirement, and escalation date.</td><td>EOB link and verified secondary deadline.</td></tr>
+<tr><td>UAT-05</td><td>Corrected claim is created without the original claim reference.</td><td>Submission is blocked until original control number and payer-specific corrected-claim rule are documented.</td><td>Validation message and completed reference field.</td></tr>
+<tr><td>UAT-06</td><td>Provider manual is replaced with a new effective version.</td><td>Open claims are re-evaluated when the effective-date logic applies; superseded source remains auditable.</td><td>Version history and impacted-claim report.</td></tr>
+<tr><td>UAT-07</td><td>No acknowledgement is received after the expected interval.</td><td>System creates a follow-up task instead of assuming successful filing.</td><td>Follow-up record and payer/clearinghouse response.</td></tr>
+<tr><td>UAT-08</td><td>Deadline passes while documentation remains incomplete.</td><td>Claim enters formal exception review; patient balance is protected from automatic transfer until review is complete.</td><td>Exception decision and patient-account hold evidence.</td></tr>
+</tbody>
+</table>
+<div class="grid2" style="margin-top:16px">
+  <article class="card"><h3>What this demonstrates</h3><p>Business requirements, status design, exception routing, data validation, policy version control, user acceptance testing, and patient-impact safeguards.</p></article>
+  <article class="card black"><h3>What this does not claim</h3><p>No payer portal use, billing authority, coding authority, contract interpretation authority, claims submission experience, or employer outcomes.</p></article>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Measurement system</div><h2 style="margin-top:10px">KPIs should expose control risk before a denial occurs.</h2></div><p class="side">Metrics are designed for a simulated dashboard and should be adapted to organizational policy.</p></div>
+<div class="grid3">
+  <article class="card"><h3>Deadline source completeness</h3><p>Percent of open claims with current rule source, version, effective date, and reviewer.</p></article>
+  <article class="card black"><h3>First-pass acceptance rate</h3><p>Percent of submitted claims accepted by the clearinghouse or payer without rejection.</p></article>
+  <article class="card"><h3>Critical aging rate</h3><p>Percent of claims inside the critical threshold before the internal safety date.</p></article>
+  <article class="card black"><h3>Unacknowledged submission rate</h3><p>Percent of transmitted claims without receipt or acceptance evidence.</p></article>
+  <article class="card"><h3>Timely-filing denial rate</h3><p>Percent of adjudicated claims denied for filing-limit reasons, segmented by failure origin.</p></article>
+  <article class="card black"><h3>Exception recovery rate</h3><p>Percent of validated exceptions resolved with documented evidence and final disposition.</p></article>
+</div>
+<table style="margin-top:18px">
+<thead><tr><th>Dashboard view</th><th>Question answered</th><th>Recommended segmentation</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>Deadline risk heatmap</td><td>Which claims may miss the internal or external deadline?</td><td>Payer product, claim type, owner, days remaining</td><td>Prioritize critical claims and assign next action.</td></tr>
+<tr><td>Failure-origin trend</td><td>Where does timely-filing exposure begin?</td><td>Documentation, charge capture, payer ID, rejection, COB, ownership</td><td>Correct the upstream control, not only the final denial.</td></tr>
+<tr><td>Submission evidence gap</td><td>Which claims cannot prove acceptance?</td><td>Channel, clearinghouse, payer, owner</td><td>Retrieve evidence or escalate before deadline.</td></tr>
+<tr><td>Policy-version impact</td><td>Which claims rely on a superseded rule?</td><td>Rule source, effective date, product</td><td>Recalculate and document the updated requirement.</td></tr>
+<tr><td>Patient financial safeguard queue</td><td>Which patient balances require hold or review?</td><td>Denial reason, filing status, exception status</td><td>Prevent premature or unsupported patient billing.</td></tr>
+</tbody>
+</table>
+<div class="blackbar" style="margin-top:18px"><strong>Executive insight</strong><p>A low timely-filing denial rate can still hide serious risk if staff are manually rescuing claims at the last moment. Measure both outcomes and control reliability.</p></div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Responsible AI and role boundaries</div><h2 style="margin-top:10px">AI may support the workflow, but it cannot become the rule source.</h2></div><p class="side">Human review remains required when deadlines, contracts, exceptions, or patient balances are affected.</p></div>
+<div class="grid2">
+  <article class="card"><h3>Appropriate support</h3><ul><li>Extract candidate dates from an approved source.</li><li>Flag missing fields or conflicting plan information.</li><li>Draft a non-clinical work-queue summary.</li><li>Identify aging patterns in synthetic data.</li><li>Suggest a follow-up checklist for human review.</li></ul></article>
+  <article class="card black"><h3>Inappropriate or high-risk use</h3><ul><li>Invent a payer deadline from general knowledge.</li><li>Interpret a contract as final authority.</li><li>Approve a late-filing exception.</li><li>Close a rejected claim without evidence.</li><li>Transfer a balance to the patient automatically.</li></ul></article>
+</div>
+<table style="margin-top:18px">
+<thead><tr><th>AI control</th><th>Required safeguard</th><th>Failure signal</th><th>Human owner</th></tr></thead>
+<tbody>
+<tr><td>Approved-source restriction</td><td>Use only designated current manuals, contracts, and official notices.</td><td>Source missing, external web content, or superseded version.</td><td>Revenue-cycle policy owner or authorized reviewer.</td></tr>
+<tr><td>Draft status</td><td>AI-calculated deadline remains draft until validated.</td><td>Deadline becomes active without reviewer identity.</td><td>Assigned claims-support reviewer.</td></tr>
+<tr><td>Traceability</td><td>Store source text, date logic, model output, and reviewer action.</td><td>Deadline exists without reproducible calculation.</td><td>Data-quality or workflow owner.</td></tr>
+<tr><td>Uncertainty handling</td><td>Route conflicting or incomplete records to exception review.</td><td>AI selects a rule despite product ambiguity.</td><td>Contracting / payer-relations escalation pathway.</td></tr>
+<tr><td>Patient safeguard</td><td>Do not use unresolved filing status to assign patient responsibility.</td><td>Balance changes while claim status is disputed.</td><td>Patient financial-services reviewer.</td></tr>
+</tbody>
+</table>
+<div class="callout" style="margin-top:18px">Responsible automation makes uncertainty more visible. It does not hide uncertainty behind a confident date.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Career translation</div><h2 style="margin-top:10px">How this project supports Kori's 2026-2027 career foundation.</h2>
+<div class="grid3" style="margin-top:18px">
+  <article class="card"><h3>Revenue-cycle support</h3><p>Demonstrates claim-lifecycle awareness, deadline risk, submission evidence, rejection recovery, and denial feedback.</p></article>
+  <article class="card black"><h3>Patient access</h3><p>Connects accurate coverage context and patient communication to downstream claim readiness and financial clarity.</p></article>
+  <article class="card"><h3>Health informatics support</h3><p>Shows data-field design, status vocabulary, source traceability, version control, and workflow integration.</p></article>
+  <article class="card black"><h3>Quality improvement</h3><p>Uses root-cause analysis, measurable controls, UAT, exception tracking, and closed-loop verification.</p></article>
+  <article class="card"><h3>Implementation support</h3><p>Translates policy into business requirements, ownership rules, alerts, testing scenarios, and adoption safeguards.</p></article>
+  <article class="card black"><h3>Responsible AI</h3><p>Defines approved support, prohibited authority, human review, traceability, and patient-impact boundaries.</p></article>
+</div>
+<div class="note" style="margin-top:18px"><b>Resume project bullet:</b><br>Developed a student-level, no-PHI timely-filing control case study that translated payer-rule variability into an evidence-based claim workflow; designed source-version fields, deadline calculations, internal safety thresholds, submission-receipt controls, rejection escalation, synthetic UAT scenarios, KPIs, patient financial safeguards, and responsible-AI boundaries.</div>
+<div class="note" style="margin-top:12px"><b>Interview talking point:</b><br>I learned that timely filing is not just a deadline lookup. It is a closed-loop operational control. The team must identify the exact payer product, verify the controlling source, calculate the correct trigger date, submit a clean claim, capture acceptance evidence, resolve rejections, and confirm closure. My simulated project shows how I would organize those requirements without claiming billing or payer-portal experience.</div>
+<div class="blackbar" style="margin-top:16px"><strong>Career insight to save</strong><p>Recruiter-ready value comes from showing how a policy becomes a reliable workflow - with data, ownership, evidence, escalation, testing, and patient safeguards.</p></div>
+<div class="footer-note">Portfolio classification: Student-developed, simulated, educational, no-PHI healthcare operations project. No real claims, payer contracts, portal records, patient accounts, employer processes, or financial outcomes were used.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">References and limitations</div><h2 style="margin-top:10px">Evidence-based, current, and deliberately bounded.</h2></div><p class="side">Accessed July 2026. Rules may change. The controlling contract, manual, law, or payer notice must be verified for each live workflow.</p></div>
+<ol class="refs">
+<li>Centers for Medicare &amp; Medicaid Services. <i>Timely Filing - Medicare Billing: CMS-1500 &amp; 837P.</i> CMS states that Medicare claims must be submitted to the correct MAC no later than one calendar year after the date of service. https://www.cms.gov/Outreach-and-Education/MLN/WBT/MLN4462429-MLN-WBT-1500/1500/lesson01/08/index.html</li>
+<li>Centers for Medicare &amp; Medicaid Services. <i>Exceptions for Late Filing - Medicare Billing: CMS-1500 &amp; 837P.</i> CMS describes limited exceptions, including administrative error, retroactive entitlement, certain Medicaid recoupment situations, and retroactive disenrollment from MA/PACE. https://www.cms.gov/outreach-and-education/mln/wbt/mln4462429-mln-wbt-1500/1500/lesson01/09/index.html</li>
+<li>TRICARE. <i>Filing Claims.</i> TRICARE states that U.S. and U.S.-territory claims generally must be filed within one year of service and other overseas claims within three years. https://www.tricare.mil/PatientResources/Claims</li>
+<li>Cigna Healthcare. <i>Claims Submission, Payments, and Filing.</i> Cigna's public provider page lists 90 days for participating providers and 180 days for out-of-network providers, with exceptions. https://www.cigna.com/health-care-providers/coverage-and-claims/submit-claims</li>
+<li>UnitedHealthcare. <i>2026 UnitedHealthcare Care Provider Administrative Guide.</i> The guide directs providers to their internal contracting contact or Participation Agreement for timely-filing information and notes that the guide is subject to change. https://www.uhcprovider.com/content/dam/provider/docs/public/admin-guides/2026-UHC-Administrative-Guide.pdf</li>
+<li>Tennessee Division of TennCare. <i>TennCare Provider Resource Board.</i> TennCare provides provider updates and announced a future timely-filing change for certain 1915(c) and ICF/IID claims effective July 1, 2027. https://www.tn.gov/tenncare/providers/tenncare-provider-resource-board.html</li>
+</ol>
+<div class="grid2" style="margin-top:18px">
+  <article class="card"><h3>Educational limitation</h3><p>This project does not provide legal, contractual, coding, billing, or payer-specific operational advice. It demonstrates a student-designed control model.</p></article>
+  <article class="card black"><h3>Integrity boundary</h3><p>Kori Pickle does not claim claims-submission experience, payer-portal access, contract interpretation authority, coding authority, billing authority, or employer results.</p></article>
+</div>
+<div class="blackbar" style="margin-top:18px"><strong>Healthcare Operations Intelligence Engine&trade;</strong><p>Where healthcare workflows break before patients, staff, and revenue feel the impact.</p></div>
+<div class="footer-note">Created by Kori Pickle, BSHA Candidate, University of Phoenix. Student-developed, simulated, no-PHI healthcare operations portfolio project.</div>
+</section>
+</body>
+</html>
