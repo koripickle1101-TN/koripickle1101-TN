@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Student-developed, simulated, no-PHI timely filing and claim deadline control case study by Kori Pickle, BSHA Candidate.">
+<title>Timely Filing Deadline & Claim Submission Control Intelligence | Kori Pickle</title>
+<style>
+:root{--o:#FF8200;--b:#000000;--w:#FFFFFF;--serif:"Liberation Serif",Georgia,serif;--sans:"DejaVu Sans",Arial,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--w);color:var(--b);font-family:var(--sans);line-height:1.48}
+a{color:inherit}
+@page{size:Letter;margin:.42in;@bottom-left{content:"Created by Kori Pickle | Healthcare Operations Intelligence Engine\2122";font:8pt var(--sans);color:#000}@bottom-right{content:"Page " counter(page) " of " counter(pages);font:8pt var(--sans);color:#000}}
+.page{min-height:9.95in;page-break-after:always;position:relative;padding:.06in .04in .04in}
+.page:last-child{page-break-after:auto}
+.web-nav{display:none}
+.eyebrow{font-size:8.5pt;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--o);display:flex;align-items:center;gap:9px}
+.eyebrow:before{content:"";width:26px;height:2px;background:var(--o);display:inline-block}
+h1,h2,h3{font-family:var(--serif);line-height:1.02;margin:0}
+h1{font-size:34pt;letter-spacing:-.035em}
+h2{font-size:26pt;letter-spacing:-.02em}
+h3{font-size:17pt}
+p{font-size:10pt;margin:0}
+.lead{font-size:12pt;line-height:1.55}
+.orange{color:var(--o)}
+.toprule{height:7px;background:var(--o);margin-bottom:18px}
+.blackbar{background:var(--b);color:var(--w);padding:14px 18px;border:2px solid var(--o)}
+.blackbar strong{color:var(--o);font-size:8pt;letter-spacing:.13em;text-transform:uppercase}
+.blackbar p{font-family:var(--serif);font-size:19pt;line-height:1.08;margin-top:6px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.card{border:1px solid var(--b);border-top:6px solid var(--o);padding:15px;background:var(--w)}
+.card.black{background:var(--b);color:var(--w)}
+.card h3{margin-bottom:8px}
+.card p,.card li{font-size:9.2pt}
+.card ul{padding-left:17px;margin:8px 0 0}
+.callout{border-left:5px solid var(--o);padding:12px 14px;background:#fff;font-family:var(--serif);font-size:16pt;line-height:1.18}
+.note{border:1px solid var(--b);padding:12px 14px;font-size:8.8pt;font-weight:600}
+.section-head{display:block;margin-bottom:18px}
+.section-head .side{max-width:100%;font-size:8.5pt;margin-top:8px;border-left:3px solid var(--o);padding-left:9px}
+.tagrow{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.tag{border:1px solid currentColor;padding:5px 7px;font-size:7pt;font-weight:700;text-transform:uppercase}
+.button{display:inline-block;margin-top:14px;background:var(--b);color:var(--w);border:2px solid var(--o);padding:9px 13px;text-decoration:none;font-size:8pt;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px}
+.step{text-align:center;position:relative}
+.node{width:54px;height:54px;border:3px solid var(--o);box-shadow:inset 0 0 0 3px var(--w),inset 0 0 0 4px var(--b);border-radius:50%;display:grid;place-items:center;margin:auto;font-family:var(--serif);font-size:16pt;font-weight:700;background:var(--w)}
+.step strong{display:block;font-size:7pt;margin-top:6px;line-height:1.2}
+.arrow{font-size:18pt;color:var(--o);align-self:center;text-align:center}
+table{width:100%;border-collapse:collapse;margin-top:14px;table-layout:fixed}
+th,td{border:1px solid var(--b);padding:7px;vertical-align:top;text-align:left;font-size:8pt;line-height:1.35}
+th{background:var(--b);color:var(--w);font-weight:700}
+.small td,.small th{font-size:7.35pt;padding:6px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:16px}
+.kpi{border:1px solid var(--b);padding:12px;text-align:center;border-top:6px solid var(--o)}
+.kpi b{font-family:var(--serif);font-size:24pt;display:block;line-height:1}
+.kpi span{font-size:7.5pt;font-weight:700;text-transform:uppercase}
+.cover{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+.cover-left{display:flex;flex-direction:column;justify-content:space-between}
+.cover-box{border:1px solid var(--b);padding:22px;box-shadow:10px 10px 0 -7px var(--o);display:flex;flex-direction:column;justify-content:space-between;min-height:8.7in}
+.cover-title{font-family:var(--serif);font-size:35pt;font-weight:700;line-height:.98;margin-top:18px}
