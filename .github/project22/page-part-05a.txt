@@ -1,0 +1,30 @@
+<tr><td>Internal safety date</td><td>30 days before external deadline</td><td>Organization-defined policy, not payer rule</td><td>Safe / Warning / Critical</td></tr>
+<tr><td>Submission channel</td><td>837 EDI via approved clearinghouse</td><td>Correct payer ID and transaction format</td><td>Ready / Blocked / Submitted</td></tr>
+<tr><td>Receipt evidence</td><td>999/277CA or clearinghouse acceptance report</td><td>Confirm acceptance, not only transmission</td><td>Accepted / Rejected / Pending</td></tr>
+<tr><td>Correction pathway</td><td>Corrected claim linked to original control number</td><td>Follow exact payer and contract requirements</td><td>Open / Resubmitted / Closed</td></tr>
+<tr><td>COB evidence</td><td>Primary EOB and primary processing date</td><td>Confirm secondary rule trigger and required attachment</td><td>Waiting / Ready / Submitted</td></tr>
+<tr><td>Exception evidence</td><td>Retroactive eligibility notice or payer-directed resubmission</td><td>Store documentation and approval pathway</td><td>Potential / Validated / Denied</td></tr>
+<tr><td>Closure</td><td>Adjudicated or documented final resolution</td><td>Patient balance safeguards and denial feedback completed</td><td>Closed / Follow-up / Escalated</td></tr>
+</tbody>
+</table>
+<div class="matrix-legend">
+  <div class="legend"><b>SAFE</b>More than 45 days before internal safety date; source and evidence complete.</div>
+  <div class="legend"><b>WARNING</b>15-45 days remaining or one unresolved control field.</div>
+  <div class="legend"><b>CRITICAL</b>Fewer than 15 days, rejected, missing source, or no accountable owner.</div>
+  <div class="legend"><b>EXCEPTION</b>Deadline passed or rule disputed; formal review and evidence pathway required.</div>
+</div>
+<div class="callout" style="margin-top:18px">The deadline field should never be editable without the source, trigger date, claim type, and reviewer changing with it.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Synthetic UAT</div><h2 style="margin-top:10px">Test the workflow before trusting it.</h2>
+<table>
+<thead><tr><th style="width:12%">Test</th><th style="width:24%">Scenario</th><th style="width:26%">Expected control behavior</th><th>Pass evidence</th></tr></thead>
+<tbody>
+<tr><td>UAT-01</td><td>Payer logo matches multiple products with different contracts.</td><td>System blocks deadline calculation until exact product and network context are confirmed.</td><td>Blocked status, reason code, owner, timestamp.</td></tr>
+<tr><td>UAT-02</td><td>Claim is transmitted but receives a clearinghouse rejection.</td><td>Status changes to rejected; deadline clock remains active; correction task routes to named owner.</td><td>Rejection code, correction due date, resubmission receipt.</td></tr>
+<tr><td>UAT-03</td><td>Original Medicare claim is 20 days from external deadline.</td><td>Critical alert activates and requires daily follow-up until acceptance or documented exception.</td><td>Alert history and closure evidence.</td></tr>
+<tr><td>UAT-04</td><td>Secondary claim is waiting for primary EOB.</td><td>Record stores primary processing date, secondary rule source, attachment requirement, and escalation date.</td><td>EOB link and verified secondary deadline.</td></tr>
+<tr><td>UAT-05</td><td>Corrected claim is created without the original claim reference.</td><td>Submission is blocked until original control number and payer-specific corrected-claim rule are documented.</td><td>Validation message and completed reference field.</td></tr>
+<tr><td>UAT-06</td><td>Provider manual is replaced with a new effective version.</td><td>Open claims are re-evaluated when the effective-date logic applies; superseded source remains auditable.</td><td>Version history and impacted-claim report.</td></tr>
