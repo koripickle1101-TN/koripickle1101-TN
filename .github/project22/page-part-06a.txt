@@ -1,0 +1,30 @@
+</table>
+<div class="blackbar" style="margin-top:18px"><strong>Executive insight</strong><p>A low timely-filing denial rate can still hide serious risk if staff are manually rescuing claims at the last moment. Measure both outcomes and control reliability.</p></div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Responsible AI and role boundaries</div><h2 style="margin-top:10px">AI may support the workflow, but it cannot become the rule source.</h2></div><p class="side">Human review remains required when deadlines, contracts, exceptions, or patient balances are affected.</p></div>
+<div class="grid2">
+  <article class="card"><h3>Appropriate support</h3><ul><li>Extract candidate dates from an approved source.</li><li>Flag missing fields or conflicting plan information.</li><li>Draft a non-clinical work-queue summary.</li><li>Identify aging patterns in synthetic data.</li><li>Suggest a follow-up checklist for human review.</li></ul></article>
+  <article class="card black"><h3>Inappropriate or high-risk use</h3><ul><li>Invent a payer deadline from general knowledge.</li><li>Interpret a contract as final authority.</li><li>Approve a late-filing exception.</li><li>Close a rejected claim without evidence.</li><li>Transfer a balance to the patient automatically.</li></ul></article>
+</div>
+<table style="margin-top:18px">
+<thead><tr><th>AI control</th><th>Required safeguard</th><th>Failure signal</th><th>Human owner</th></tr></thead>
+<tbody>
+<tr><td>Approved-source restriction</td><td>Use only designated current manuals, contracts, and official notices.</td><td>Source missing, external web content, or superseded version.</td><td>Revenue-cycle policy owner or authorized reviewer.</td></tr>
+<tr><td>Draft status</td><td>AI-calculated deadline remains draft until validated.</td><td>Deadline becomes active without reviewer identity.</td><td>Assigned claims-support reviewer.</td></tr>
+<tr><td>Traceability</td><td>Store source text, date logic, model output, and reviewer action.</td><td>Deadline exists without reproducible calculation.</td><td>Data-quality or workflow owner.</td></tr>
+<tr><td>Uncertainty handling</td><td>Route conflicting or incomplete records to exception review.</td><td>AI selects a rule despite product ambiguity.</td><td>Contracting / payer-relations escalation pathway.</td></tr>
+<tr><td>Patient safeguard</td><td>Do not use unresolved filing status to assign patient responsibility.</td><td>Balance changes while claim status is disputed.</td><td>Patient financial-services reviewer.</td></tr>
+</tbody>
+</table>
+<div class="callout" style="margin-top:18px">Responsible automation makes uncertainty more visible. It does not hide uncertainty behind a confident date.</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="eyebrow">Career translation</div><h2 style="margin-top:10px">How this project supports Kori's 2026-2027 career foundation.</h2>
+<div class="grid3" style="margin-top:18px">
+  <article class="card"><h3>Revenue-cycle support</h3><p>Demonstrates claim-lifecycle awareness, deadline risk, submission evidence, rejection recovery, and denial feedback.</p></article>
+  <article class="card black"><h3>Patient access</h3><p>Connects accurate coverage context and patient communication to downstream claim readiness and financial clarity.</p></article>
