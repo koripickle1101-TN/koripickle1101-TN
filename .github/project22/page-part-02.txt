@@ -1,0 +1,60 @@
+.cover-sub{font-size:10pt;margin-top:18px;line-height:1.55}
+.signature{font-size:9pt;font-weight:700}
+.truth{font-size:8.3pt;border-left:4px solid var(--o);padding-left:10px;margin-top:14px}
+.timeline{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:16px}
+.tbox{border:1px solid var(--b);padding:7px 4px;text-align:center;min-height:72px;display:flex;flex-direction:column;justify-content:center}
+.tbox b{font-family:var(--serif);font-size:13pt;color:var(--o)}
+.tbox span{font-size:6.5pt;font-weight:700;margin-top:3px}
+.matrix-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.legend{border:1px solid var(--b);padding:8px;font-size:7.4pt}.legend b{display:block;color:var(--o)}
+.footer-note{position:static;font-size:7.2pt;border-top:1px solid var(--b);padding-top:6px;margin-top:14px}
+.refs li{font-size:8pt;margin-bottom:7px;line-height:1.35}
+.refs a{word-break:break-all;color:var(--o);font-weight:700}
+@media screen{
+ body{max-width:1120px;margin:auto;padding:20px}.page{min-height:auto;padding:38px 30px;margin-bottom:20px;border:1px solid var(--b)}.web-nav{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--b);margin-bottom:18px}.web-nav a{text-decoration:none;font-size:12px;font-weight:700}.footer-note{position:static;margin-top:20px}.cover-box{min-height:740px}
+}
+</style>
+</head>
+<body>
+<div class="web-nav"><a href="../index.html">Kori Pickle</a><a href="../index.html#projects">Back to portfolio projects</a></div>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="cover">
+  <div class="cover-left">
+    <div>
+      <div class="eyebrow">Healthcare Operations Intelligence Engine&trade;</div>
+      <div class="cover-title">Timely Filing Deadline &amp; <span class="orange">Claim Submission Control Intelligence&trade;</span></div>
+      <p class="cover-sub">A student-developed case study that converts a simplified timely-filing infographic into a controlled healthcare operations workflow for payer-rule verification, claim readiness, deadline calculation, submission evidence, rejection recovery, denial prevention, patient financial safeguards, and verified closure.</p>
+      <div class="tagrow"><span class="tag">Revenue Cycle</span><span class="tag">Claims Support</span><span class="tag">Denial Prevention</span><span class="tag">Data Quality</span><span class="tag">No PHI</span></div><a class="button" href="./Kori_Pickle_Timely_Filing_Claim_Deadline_Control_Case_Study_2026.pdf" target="_blank">Download branded PDF</a>
+    </div>
+    <div>
+      <div class="blackbar"><strong>Core question</strong><p>Where did the claim workflow first lose control before the deadline expired?</p></div>
+      <p class="truth">Created by Kori Pickle, BSHA Candidate, University of Phoenix. This project is educational, simulated, and does not use PHI, employer data, payer portal data, claims data, contracts, or real patient information.</p>
+    </div>
+  </div>
+  <div class="cover-box">
+    <div>
+      <div class="eyebrow">Portfolio Project 22 | 2026-2027</div>
+      <h2 style="margin-top:18px">A deadline is not a single date.</h2>
+      <p class="lead" style="margin-top:18px">It is the final output of a chain of decisions: exact payer and product identification, effective policy retrieval, date-of-service logic, claim type, coordination of benefits, clean-claim readiness, transmission, acceptance evidence, rejection handling, and escalation.</p>
+    </div>
+    <div>
+      <div class="callout">A claim can be submitted "on time" operationally and still fail if it reaches the wrong payer, lacks a clean-claim element, is rejected without follow-up, or has no proof of receipt.</div>
+      <p class="signature" style="margin-top:18px">Kori Pickle | Patient-to-Professional Healthcare Operations Learner</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Executive breakdown</div><h2 style="margin-top:10px">What the LinkedIn post explains - and what it leaves out.</h2></div><p class="side">The post is useful as an awareness prompt. It should not be used as a universal payer deadline reference.</p></div>
+<div class="grid2">
+  <article class="card"><h3>What it gets right</h3><ul><li>Claims must be filed within payer-defined timeframes.</li><li>Late filing can create denials and payment loss.</li><li>Requirements vary by payer and plan.</li><li>Teams should verify payer-specific guidance.</li></ul></article>
+  <article class="card black"><h3>What is operationally missing</h3><ul><li>Participation agreement and contract terms</li><li>Original versus corrected versus secondary claim rules</li><li>Date-of-service versus discharge-date logic</li><li>State and product variation</li><li>Proof of submission and clearinghouse acceptance</li><li>Rejected-claim recovery and escalation ownership</li></ul></article>
+  <article class="card"><h3>Why the table is risky</h3><p>Brand-wide ranges can look authoritative even when the real deadline depends on the exact product, network status, provider agreement, claim type, effective date, and applicable law. A static social-media chart may become outdated without warning.</p></article>
+  <article class="card black"><h3>Important correction</h3><p>The infographic states that Medicare has "no filing limit for secondary claims." CMS guidance supports a one-calendar-year Medicare filing rule with limited exceptions; it does not support using a blanket no-limit statement as an operational rule.</p></article>
+</div>
+<div class="callout" style="margin-top:18px">Use the infographic to ask better questions - not to calculate a live claim deadline.</div>
+<div class="note" style="margin-top:14px">Career relevance: This distinction demonstrates evidence validation, policy-source discipline, revenue-cycle awareness, and the ability to translate public content into a safer operational control.</div>
