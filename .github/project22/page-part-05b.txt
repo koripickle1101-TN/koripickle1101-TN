@@ -1,0 +1,30 @@
+<tr><td>UAT-07</td><td>No acknowledgement is received after the expected interval.</td><td>System creates a follow-up task instead of assuming successful filing.</td><td>Follow-up record and payer/clearinghouse response.</td></tr>
+<tr><td>UAT-08</td><td>Deadline passes while documentation remains incomplete.</td><td>Claim enters formal exception review; patient balance is protected from automatic transfer until review is complete.</td><td>Exception decision and patient-account hold evidence.</td></tr>
+</tbody>
+</table>
+<div class="grid2" style="margin-top:16px">
+  <article class="card"><h3>What this demonstrates</h3><p>Business requirements, status design, exception routing, data validation, policy version control, user acceptance testing, and patient-impact safeguards.</p></article>
+  <article class="card black"><h3>What this does not claim</h3><p>No payer portal use, billing authority, coding authority, contract interpretation authority, claims submission experience, or employer outcomes.</p></article>
+</div>
+</section>
+
+<section class="page">
+<div class="toprule"></div>
+<div class="section-head"><div><div class="eyebrow">Measurement system</div><h2 style="margin-top:10px">KPIs should expose control risk before a denial occurs.</h2></div><p class="side">Metrics are designed for a simulated dashboard and should be adapted to organizational policy.</p></div>
+<div class="grid3">
+  <article class="card"><h3>Deadline source completeness</h3><p>Percent of open claims with current rule source, version, effective date, and reviewer.</p></article>
+  <article class="card black"><h3>First-pass acceptance rate</h3><p>Percent of submitted claims accepted by the clearinghouse or payer without rejection.</p></article>
+  <article class="card"><h3>Critical aging rate</h3><p>Percent of claims inside the critical threshold before the internal safety date.</p></article>
+  <article class="card black"><h3>Unacknowledged submission rate</h3><p>Percent of transmitted claims without receipt or acceptance evidence.</p></article>
+  <article class="card"><h3>Timely-filing denial rate</h3><p>Percent of adjudicated claims denied for filing-limit reasons, segmented by failure origin.</p></article>
+  <article class="card black"><h3>Exception recovery rate</h3><p>Percent of validated exceptions resolved with documented evidence and final disposition.</p></article>
+</div>
+<table style="margin-top:18px">
+<thead><tr><th>Dashboard view</th><th>Question answered</th><th>Recommended segmentation</th><th>Action</th></tr></thead>
+<tbody>
+<tr><td>Deadline risk heatmap</td><td>Which claims may miss the internal or external deadline?</td><td>Payer product, claim type, owner, days remaining</td><td>Prioritize critical claims and assign next action.</td></tr>
+<tr><td>Failure-origin trend</td><td>Where does timely-filing exposure begin?</td><td>Documentation, charge capture, payer ID, rejection, COB, ownership</td><td>Correct the upstream control, not only the final denial.</td></tr>
+<tr><td>Submission evidence gap</td><td>Which claims cannot prove acceptance?</td><td>Channel, clearinghouse, payer, owner</td><td>Retrieve evidence or escalate before deadline.</td></tr>
+<tr><td>Policy-version impact</td><td>Which claims rely on a superseded rule?</td><td>Rule source, effective date, product</td><td>Recalculate and document the updated requirement.</td></tr>
+<tr><td>Patient financial safeguard queue</td><td>Which patient balances require hold or review?</td><td>Denial reason, filing status, exception status</td><td>Prevent premature or unsupported patient billing.</td></tr>
+</tbody>
