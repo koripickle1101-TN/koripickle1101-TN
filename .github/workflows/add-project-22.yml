@@ -1,0 +1,71 @@
+name: Add Project 22 to Portfolio
+
+on:
+  push:
+    paths:
+      - '.github/workflows/add-project-22.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-update:
+    if: github.event.head_commit.message == 'Add Project 22 timely filing portfolio updater'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install PDF renderer
+        run: python -m pip install --disable-pip-version-check weasyprint
+      - name: Assemble branded Project 22 page
+        run: |
+          mkdir -p projects
+          cat \
+            .github/project22/page-part-01.txt \
+            .github/project22/page-part-02.txt \
+            .github/project22/page-part-03.txt \
+            .github/project22/page-part-04.txt \
+            .github/project22/page-part-05a.txt \
+            .github/project22/page-part-05b.txt \
+            .github/project22/page-part-06a.txt \
+            .github/project22/page-part-06b.txt \
+            > projects/timely-filing-claim-deadline-control-intelligence.html
+      - name: Generate branded Project 22 PDF
+        run: weasyprint projects/timely-filing-claim-deadline-control-intelligence.html projects/Kori_Pickle_Timely_Filing_Claim_Deadline_Control_Case_Study_2026.pdf
+      - name: Insert Project 22 card
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path('index.html')
+          text = path.read_text(encoding='utf-8')
+          marker = '<article class="card new"><span class="number">PROJECT 21 · NEW</span>'
+          card = '''<article class="card new"><span class="number">PROJECT 22 · NEW</span><h3>Timely Filing Deadline &amp; Claim Submission Control Intelligence™</h3><p>Converts a simplified timely-filing infographic into a simulated no-PHI closed-loop control model for exact payer-product identification, authoritative rule verification, deadline calculation, clean-claim readiness, submission evidence, rejection recovery, coordination-of-benefits handling, patient financial safeguards, synthetic UAT, KPIs, and responsible-AI boundaries.</p><div class="tags"><span>Timely Filing</span><span>Claims Support</span><span>Denial Prevention</span><span>Revenue Cycle</span></div><a class="open" href="./projects/timely-filing-claim-deadline-control-intelligence.html">Open branded case study →</a></article>'''
+
+          if 'PROJECT 22 · NEW' in text:
+              print('Project 22 is already present; no index change needed.')
+          else:
+              start = text.find(marker)
+              if start == -1:
+                  raise SystemExit('Project 21 marker not found.')
+              close = text.find('</article>', start)
+              if close == -1:
+                  raise SystemExit('Project 21 closing tag not found.')
+              insert_at = close + len('</article>')
+              text = text[:insert_at] + '\n' + card + text[insert_at:]
+              path.write_text(text, encoding='utf-8')
+      - name: Remove staging fragments
+        run: rm -rf .github/project22
+      - name: Commit portfolio update
+        run: |
+          if git diff --quiet && git ls-files --error-unmatch projects/Kori_Pickle_Timely_Filing_Claim_Deadline_Control_Case_Study_2026.pdf >/dev/null 2>&1; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A index.html projects .github/project22
+          git commit -m "Add Project 22 timely filing control case study and PDF [skip ci]"
+          git push
