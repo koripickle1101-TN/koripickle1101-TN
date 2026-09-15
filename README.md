@@ -1,6 +1,6 @@
 # Kori Pickle
 
-BSHA Candidate, University of Phoenix  
+Candidate, Bachelor's of Science Degree in Healthcare Administration, University of Phoenix  
 Healthcare operations portfolio · Simulated systems · No PHI  
 Knoxville, Tennessee · Open to 100% remote entry-level healthcare operations roles
 
@@ -29,7 +29,7 @@ Pages site for this profile repo: https://koripickle1101-tn.github.io/koripickle
 ## Education
 
 University of Phoenix  
-Bachelor of Science in Healthcare Administration  
+Bachelor's of Science Degree in Healthcare Administration  
 Expected graduation February–March 2027
 
 ## Contact
