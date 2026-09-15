@@ -16,8 +16,6 @@ This GitHub account is a student portfolio. The projects below are simulated edu
 4. [DPIS — Denial Prevention Intelligence System](https://github.com/koripickle1101-TN/denial-prevention-intelligence-system)
 5. [SBI — Silent Breakpoint Intelligence](https://github.com/koripickle1101-TN/silent-breakpoint-intelligence-system)
 
-Pages site for this profile repo: https://koripickle1101-tn.github.io/koripickle1101-TN/
-
 ## Focus
 
 - Patient access and eligibility verification
