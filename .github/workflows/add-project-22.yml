@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -22,16 +24,20 @@ jobs:
       - name: Assemble branded Project 22 page
         run: |
           mkdir -p projects
-          cat \
-            .github/project22/page-part-01.txt \
-            .github/project22/page-part-02.txt \
-            .github/project22/page-part-03.txt \
-            .github/project22/page-part-04.txt \
-            .github/project22/page-part-05a.txt \
-            .github/project22/page-part-05b.txt \
-            .github/project22/page-part-06a.txt \
-            .github/project22/page-part-06b.txt \
-            > projects/timely-filing-claim-deadline-control-intelligence.html
+          if [ -d .github/project22 ]; then
+            cat \
+              .github/project22/page-part-01.txt \
+              .github/project22/page-part-02.txt \
+              .github/project22/page-part-03.txt \
+              .github/project22/page-part-04.txt \
+              .github/project22/page-part-05a.txt \
+              .github/project22/page-part-05b.txt \
+              .github/project22/page-part-06a.txt \
+              .github/project22/page-part-06b.txt \
+              > projects/timely-filing-claim-deadline-control-intelligence.html
+          else
+            echo "Project 22 page source already assembled."
+          fi
       - name: Generate branded Project 22 PDF
         run: weasyprint projects/timely-filing-claim-deadline-control-intelligence.html projects/Kori_Pickle_Timely_Filing_Claim_Deadline_Control_Case_Study_2026.pdf
       - name: Insert Project 22 card
@@ -67,5 +73,6 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A index.html projects .github/project22
-          git commit -m "Add Project 22 timely filing control case study and PDF [skip ci]"
+          git commit -m "Add Project 22 timely filing control case study and PDF [skip ci]" || true
+          git pull --rebase origin main
           git push
