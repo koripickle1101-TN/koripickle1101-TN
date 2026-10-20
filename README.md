@@ -13,6 +13,12 @@ This GitHub account is a student portfolio. The projects below are simulated edu
 
 [Healthcare operations portfolio hub](https://healthcare-operations-portfolio-hub.vercel.app/)
 
+## Recruiter evidence
+
+[EVIS — completed 12-case synthetic patient access queue](https://github.com/koripickle1101-TN/eligibility-verification-intelligence-system/blob/main/evidence/patient-access-queue-reviewer-guide.md) · [PARCS — five fictional authorization cases](https://github.com/koripickle1101-TN/parcs-prior-authorization-command-system/blob/main/evidence/prior-authorization-queue-example.md) · [DPIS — five fictional claim-readiness cases](https://github.com/koripickle1101-TN/denial-prevention-intelligence-system/blob/main/evidence/denial-queue-reviewer-guide.md).
+
+All three are student-developed, simulated, no-PHI exercises; they are not professional healthcare work or employer outcomes.
+
 ## Featured systems
 
 1. [Portfolio hub](https://healthcare-operations-portfolio-hub.vercel.app/) — student healthcare operations portfolio index
