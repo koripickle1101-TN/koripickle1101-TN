@@ -1,3 +1,7 @@
+> Portfolio navigation: [Central Healthcare Operations Portfolio Hub](https://healthcare-operations-portfolio-hub.vercel.app/) · [Approved project directory](https://github.com/koripickle1101-TN/healthcare-operations-portfolio-hub) · [GitHub profile](https://github.com/koripickle1101-TN)
+>
+> Student-developed educational work using synthetic scenarios. No PHI or claimed professional healthcare employment.
+
 # Kori Pickle
 Healthcare operations · Patient access · Eligibility verification · Prior authorization · Denial prevention · Revenue cycle workflow
 
