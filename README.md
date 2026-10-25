@@ -1,7 +1,7 @@
 # Kori Pickle
 Healthcare operations · Patient access · Eligibility verification · Prior authorization · Denial prevention · Revenue cycle workflow
 
-Candidate, Bachelor's of Science Degree in Healthcare Administration, University of Phoenix  
+Bachelor of Science in Healthcare Administration student, University of Phoenix · Degree in progress  
 Student-developed simulated portfolio · Synthetic data only · No PHI  
 Knoxville, Tennessee · Open to 100% remote entry-level healthcare operations roles
 
